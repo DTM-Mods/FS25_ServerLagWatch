@@ -45,6 +45,12 @@ In the server log, look for lines starting with `[ServerLagWatch]`.
 
 See [PATCH_NOTES.md](PATCH_NOTES.md) for what changed in each version.
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/DTM-Mods/.github/main/assets/license.jpg" alt="License" width="100%">
+</p>
+
+MIT, see [LICENSE](LICENSE).
+
 ---
 
 <p align="center">
