@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<modDesc descVersion="110">
+    <author>PropaineX</author>
+    <version>1.4.0.0</version>
+
+    <title>
+        <en>Server Lag Watch</en>
+    </title>
+
+    <description>
+        <en><![CDATA[Finds out which mod freezes your server.
+
+Whenever the server stops for longer than a quarter of a second, every player gets a notification on screen: how long the server froze and which mod script was the slowest at that moment. The same line is written to the server log, so the cause can be found afterwards.
+
+Every time the server saves the game, every player sees big red "SERVER SAVE" letters in the middle of the screen until the save is done.
+
+When the server stops answering for 3 seconds, every player sees big red "SERVER LAG WATCH" letters in the middle of the screen until it answers again.
+
+Install it on the server and on every player's game. It also turns off the profanity filter: chat, names and license plates show exactly what was typed. Apart from that it changes nothing in the game, it only measures and reports.
+]]></en>
+    </description>
+
+    <iconFilename>icon_serverLagWatch.dds</iconFilename>
+
+    <multiplayer supported="true"/>
+
+    <extraSourceFiles>
+        <sourceFile filename="scripts/NoProfanityFilter.lua"/>
+        <sourceFile filename="scripts/ServerLagWatch.lua"/>
+    </extraSourceFiles>
+</modDesc>
