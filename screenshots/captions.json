@@ -5,8 +5,8 @@
     "at": "bottom"
   },
   "3.jpg": {
-    "title": "SERVER SAVE for everyone",
-    "text": "While a dedicated server saves, every player sees SERVER SAVE in big red letters.",
-    "at": "bottom"
+    "title": "Names the mod to blame",
+    "text": "A 0.5 s freeze is reported with the script that caused it, here a screenshot mod at work.",
+    "at": "top"
   }
 }
