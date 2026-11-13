@@ -1,0 +1,12 @@
+{
+  "2.jpg": {
+    "title": "Who froze the game",
+    "text": "Every freeze over 0.25 s is reported with the script or the save that caused it.",
+    "at": "bottom"
+  },
+  "3.jpg": {
+    "title": "SERVER SAVE for everyone",
+    "text": "While a dedicated server saves, every player sees SERVER SAVE in big red letters.",
+    "at": "bottom"
+  }
+}
