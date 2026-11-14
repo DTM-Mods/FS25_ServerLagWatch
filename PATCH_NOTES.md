@@ -4,6 +4,10 @@
 
 # Patch notes
 
+## 1.4.0.1
+
+- The author now shows as **DTM Mods, PropaineX** in the mod list.
+
 ## 1.4.0.0
 - Slow vehicle and placeable calls now say who is responsible: farm name, driver (player, AI helper or no driver) and where it is (field, farmland or off-field). Implements name the driver of the tractor they hang on.
 
