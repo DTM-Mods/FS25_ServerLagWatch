@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="115">
+<modDesc descVersion="116">
     <author>DTM Mods, PropaineX</author>
-    <version>1.4.0.2</version>
+    <version>1.4.0.3</version>
 
     <title>
         <en>Server Lag Watch</en>
@@ -18,9 +18,8 @@ When the server stops answering for 3 seconds, every player sees big red "SERVER
 
 Install it on the server and on every player's game. It also turns off the profanity filter: chat, names and license plates show exactly what was typed. Apart from that it changes nothing in the game, it only measures and reports.
 
-Changelog 1.4.0.2:
-- Meets the GIANTS ModHub checks (TestRunner): textures, icon and modDesc brought up to date.
-- Errors are no longer hidden: they show in the log.]]></en>
+Changelog 1.4.0.3:
+- Updated for the current game version (modDesc version 116).]]></en>
         <de><![CDATA[Findet heraus, welcher Mod deinen Server einfrieren lässt.
 
 Sobald der Server länger als eine Viertelsekunde stehen bleibt, bekommt jeder Spieler eine Meldung auf den Bildschirm: wie lange der Server eingefroren war und welches Mod-Skript in diesem Moment am langsamsten war. Dieselbe Zeile wird ins Server-Log geschrieben, damit die Ursache auch später noch gefunden werden kann.
@@ -31,9 +30,8 @@ Wenn der Server 3 Sekunden lang nicht antwortet, sieht jeder Spieler große rote
 
 Installiere den Mod auf dem Server und im Spiel jedes Spielers. Er schaltet außerdem den Schimpfwortfilter aus: Chat, Namen und Kennzeichen zeigen genau das, was eingegeben wurde. Abgesehen davon ändert er nichts am Spiel, er misst nur und meldet.
 
-Changelog 1.4.0.2:
-- Erfüllt die GIANTS-ModHub-Prüfungen (TestRunner): Texturen, Icon und modDesc auf den neuesten Stand gebracht.
-- Fehler werden nicht mehr versteckt und erscheinen im Log.]]></de>
+Changelog 1.4.0.3:
+- An die aktuelle Spielversion angepasst (modDesc-Version 116).]]></de>
     </description>
 
     <iconFilename>icon_serverLagWatch.dds</iconFilename>
