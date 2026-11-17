@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="116">
     <author>DTM Mods, PropaineX</author>
-    <version>1.4.0.3</version>
+    <version>1.4.0.4</version>
 
     <title>
         <en>Server Lag Watch</en>
@@ -20,8 +20,8 @@ When the server stops answering for 3 seconds, every player sees big red "SERVER
 
 It also turns off the profanity filter: chat, names and license plates show exactly what was typed. Apart from that it changes nothing in the game, it only measures and reports.
 
-Changelog 1.4.0.3:
-- Updated for the current game version (modDesc version 116).]]></en>
+Changelog 1.4.0.4:
+- Description in GIANTS' ModHub layout (category, price, upkeep or hotkeys at the top).]]></en>
         <de><![CDATA[Beschreibung: Findet heraus, welcher Mod deinen Server einfrieren lässt. Jeder Hänger über eine Viertelsekunde wird jedem Spieler angezeigt und ins Server-Log geschrieben, mit dem Mod-Skript oder dem Speichern als Ursache.
 Tastenkombinationen: keine, der Mod arbeitet von selbst. Auf dem Server und im Spiel jedes Spielers installieren.
 GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
@@ -34,8 +34,8 @@ Wenn der Server 3 Sekunden lang nicht antwortet, sieht jeder Spieler große rote
 
 Er schaltet außerdem den Schimpfwortfilter aus: Chat, Namen und Kennzeichen zeigen genau das, was eingegeben wurde. Abgesehen davon ändert er nichts am Spiel, er misst nur und meldet.
 
-Changelog 1.4.0.3:
-- An die aktuelle Spielversion angepasst (modDesc-Version 116).]]></de>
+Changelog 1.4.0.4:
+- Beschreibung im ModHub-Aufbau von GIANTS (Kategorie, Preis, Unterhalt bzw. Tasten oben).]]></de>
     </description>
 
     <iconFilename>icon_serverLagWatch.dds</iconFilename>
