@@ -35,57 +35,52 @@ Server Lag Watch
 
 ## Description English
 ```text
-Finds out which mod freezes your server. Whenever the server stops for longer than a quarter of a second, every player gets a notification with how long it froze and which mod script was the slowest at that moment. The same line goes into the server log, so the cause can be found afterwards.
+Description: Finds out which mod freezes your server. Every freeze over a quarter of a second is shown to every player and written to the server log, with the mod script or the save that caused it.
+Hotkeys: none, it works on its own. Install it on the server and on every player's game.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
 
-- Freeze alerts for every freeze over 0.25 s, naming the mod script or the save that caused it.
-- Who and where: a slow vehicle or placeable is named with its farm, its driver (player, AI helper or no driver) and where it is (field, farmland or off-field).
-- SERVER SAVE: big red letters in the middle of the screen while the server saves.
-- SERVER LAG WATCH: big red letters when the server stops answering for 3 seconds, until it answers again.
-- Slow file writes during a save are logged by file name.
-- Also turns off the profanity filter: chat, names and license plates show exactly what was typed.
+Whenever the server stops for longer than a quarter of a second, every player gets a notification on screen: how long the server froze and which mod script was the slowest at that moment. The same line is written to the server log, so the cause can be found afterwards.
 
-How to use: install it on the server and on every player's game. In the server log, look for lines starting with [ServerLagWatch].
+Every time the server saves the game, every player sees big red "SERVER SAVE" letters in the middle of the screen until the save is done.
 
-Changelog 1.4.0.0:
-- Slow vehicle and placeable calls now name the farm, the driver (player, AI helper or no driver) and where it is.
-- Implements name the driver of the tractor they are attached to.
+When the server stops answering for 3 seconds, every player sees big red "SERVER LAG WATCH" letters in the middle of the screen until it answers again.
+
+It also turns off the profanity filter: chat, names and license plates show exactly what was typed. Apart from that it changes nothing in the game, it only measures and reports.
 ```
 
 ## Description German
 ```text
-Findet heraus, welche Mod deinen Server einfrieren lässt. Sobald der Server länger als eine Viertelsekunde stehen bleibt, bekommt jeder Spieler eine Benachrichtigung, wie lange er hing und welches Mod-Skript in dem Moment am langsamsten war. Dieselbe Zeile landet im Server-Log, damit die Ursache später gefunden werden kann.
+Beschreibung: Findet heraus, welcher Mod deinen Server einfrieren lässt. Jeder Hänger über eine Viertelsekunde wird jedem Spieler angezeigt und ins Server-Log geschrieben, mit dem Mod-Skript oder dem Speichern als Ursache.
+Tastenkombinationen: keine, der Mod arbeitet von selbst. Auf dem Server und im Spiel jedes Spielers installieren.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
 
-- Meldung bei jedem Hänger über 0,25 s, mit dem Mod-Skript oder dem Speichern als Ursache.
-- Wer und wo: Ein langsames Fahrzeug oder platzierbares Objekt wird mit seinem Hof, seinem Fahrer (Spieler, Helfer oder kein Fahrer) und seinem Standort (Feld, Grundstück oder außerhalb) genannt.
-- SERVER SAVE: große rote Buchstaben in der Bildschirmmitte, solange der Server speichert.
-- SERVER LAG WATCH: große rote Buchstaben, wenn der Server 3 Sekunden nicht antwortet, bis er wieder antwortet.
-- Langsame Schreibvorgänge beim Speichern werden mit Dateinamen geloggt.
-- Schaltet außerdem den Schimpfwortfilter ab: Chat, Namen und Kennzeichen zeigen genau, was eingegeben wurde.
+Sobald der Server länger als eine Viertelsekunde stehen bleibt, bekommt jeder Spieler eine Meldung auf den Bildschirm: wie lange der Server eingefroren war und welches Mod-Skript in diesem Moment am langsamsten war. Dieselbe Zeile wird ins Server-Log geschrieben, damit die Ursache auch später noch gefunden werden kann.
 
-So geht's: Auf dem Server und bei jedem Spieler installieren. Im Server-Log nach Zeilen suchen, die mit [ServerLagWatch] beginnen.
+Jedes Mal, wenn der Server das Spiel speichert, sieht jeder Spieler große rote Buchstaben "SERVER SAVE" in der Mitte des Bildschirms, bis das Speichern fertig ist.
 
-Changelog 1.4.0.0:
-- Langsame Fahrzeuge und platzierbare Objekte nennen jetzt den Hof, den Fahrer (Spieler, Helfer oder kein Fahrer) und den Standort.
-- Anbaugeräte nennen den Fahrer des Traktors, an dem sie hängen.
+Wenn der Server 3 Sekunden lang nicht antwortet, sieht jeder Spieler große rote Buchstaben "SERVER LAG WATCH" in der Mitte des Bildschirms, bis er wieder antwortet.
+
+Er schaltet außerdem den Schimpfwortfilter aus: Chat, Namen und Kennzeichen zeigen genau das, was eingegeben wurde. Abgesehen davon ändert er nichts am Spiel, er misst nur und meldet.
 ```
 
 ## Description French
 ```text
-Trouve quel mod fait geler votre serveur. Dès que le serveur s'arrête plus d'un quart de seconde, chaque joueur reçoit une notification indiquant la durée du gel et le script de mod le plus lent à ce moment-là. La même ligne est écrite dans le journal du serveur, pour retrouver la cause plus tard.
+Description : trouve quel mod fait geler votre serveur. Chaque gel de plus d'un quart de seconde est affiché à chaque joueur et écrit dans le journal du serveur, avec le script de mod ou la sauvegarde en cause.
+Raccourcis : aucun, le mod fonctionne tout seul. À installer sur le serveur et dans le jeu de chaque joueur.
+GitHub : https://github.com/DTM-Mods/FS25_ServerLagWatch
 
-- Alerte pour chaque gel de plus de 0,25 s, avec le script de mod ou la sauvegarde en cause.
-- Qui et où : un véhicule ou objet plaçable lent est nommé avec sa ferme, son conducteur (joueur, ouvrier ou aucun conducteur) et sa position (champ, parcelle ou hors champ).
-- SERVER SAVE : grandes lettres rouges au milieu de l'écran pendant que le serveur sauvegarde.
-- SERVER LAG WATCH : grandes lettres rouges quand le serveur ne répond plus pendant 3 secondes, jusqu'à ce qu'il réponde.
-- Les écritures de fichiers lentes pendant une sauvegarde sont notées avec le nom du fichier.
-- Désactive aussi le filtre de grossièretés : chat, noms et plaques affichent exactement ce qui a été tapé.
+Dès que le serveur s'arrête plus d'un quart de seconde, chaque joueur reçoit une notification à l'écran : la durée du gel et le script de mod le plus lent à ce moment-là. La même ligne est écrite dans le journal du serveur, pour retrouver la cause plus tard.
 
-Utilisation : à installer sur le serveur et chez chaque joueur. Dans le journal du serveur, cherchez les lignes qui commencent par [ServerLagWatch].
+Chaque fois que le serveur sauvegarde la partie, chaque joueur voit de grandes lettres rouges "SERVER SAVE" au milieu de l'écran jusqu'à la fin de la sauvegarde.
 
-Changelog 1.4.0.0 :
-- Les véhicules et objets plaçables lents indiquent maintenant la ferme, le conducteur (joueur, ouvrier ou aucun conducteur) et la position.
-- Les outils attelés indiquent le conducteur du tracteur auquel ils sont attelés.
+Quand le serveur ne répond plus pendant 3 secondes, chaque joueur voit de grandes lettres rouges "SERVER LAG WATCH" au milieu de l'écran jusqu'à ce qu'il réponde à nouveau.
+
+Il désactive aussi le filtre de grossièretés : chat, noms et plaques affichent exactement ce qui a été tapé. À part cela, il ne change rien au jeu, il mesure et signale seulement.
 ```
+
+## Screenshots
+
+Upload the three in [`screenshots/`](screenshots/) (1600x900, unedited in-game shots from `../screenshots/`), in order: 1 a tractor with no UI, 2 a "Server froze ... game save" message, 3 a freeze message naming the mod script. 2 and 3 show other mods' HUDs (Advanced Farm Manager's control group, AutoDrive, Courseplay, ADAddOn) and 3 a Screenshot Studio message.
 
 ## Before uploading
 

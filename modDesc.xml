@@ -8,7 +8,9 @@
     </title>
 
     <description>
-        <en><![CDATA[Finds out which mod freezes your server.
+        <en><![CDATA[Description: Finds out which mod freezes your server. Every freeze over a quarter of a second is shown to every player and written to the server log, with the mod script or the save that caused it.
+Hotkeys: none, it works on its own. Install it on the server and on every player's game.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
 
 Whenever the server stops for longer than a quarter of a second, every player gets a notification on screen: how long the server froze and which mod script was the slowest at that moment. The same line is written to the server log, so the cause can be found afterwards.
 
@@ -16,11 +18,13 @@ Every time the server saves the game, every player sees big red "SERVER SAVE" le
 
 When the server stops answering for 3 seconds, every player sees big red "SERVER LAG WATCH" letters in the middle of the screen until it answers again.
 
-Install it on the server and on every player's game. It also turns off the profanity filter: chat, names and license plates show exactly what was typed. Apart from that it changes nothing in the game, it only measures and reports.
+It also turns off the profanity filter: chat, names and license plates show exactly what was typed. Apart from that it changes nothing in the game, it only measures and reports.
 
 Changelog 1.4.0.3:
 - Updated for the current game version (modDesc version 116).]]></en>
-        <de><![CDATA[Findet heraus, welcher Mod deinen Server einfrieren lässt.
+        <de><![CDATA[Beschreibung: Findet heraus, welcher Mod deinen Server einfrieren lässt. Jeder Hänger über eine Viertelsekunde wird jedem Spieler angezeigt und ins Server-Log geschrieben, mit dem Mod-Skript oder dem Speichern als Ursache.
+Tastenkombinationen: keine, der Mod arbeitet von selbst. Auf dem Server und im Spiel jedes Spielers installieren.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
 
 Sobald der Server länger als eine Viertelsekunde stehen bleibt, bekommt jeder Spieler eine Meldung auf den Bildschirm: wie lange der Server eingefroren war und welches Mod-Skript in diesem Moment am langsamsten war. Dieselbe Zeile wird ins Server-Log geschrieben, damit die Ursache auch später noch gefunden werden kann.
 
@@ -28,7 +32,7 @@ Jedes Mal, wenn der Server das Spiel speichert, sieht jeder Spieler große rote 
 
 Wenn der Server 3 Sekunden lang nicht antwortet, sieht jeder Spieler große rote Buchstaben "SERVER LAG WATCH" in der Mitte des Bildschirms, bis er wieder antwortet.
 
-Installiere den Mod auf dem Server und im Spiel jedes Spielers. Er schaltet außerdem den Schimpfwortfilter aus: Chat, Namen und Kennzeichen zeigen genau das, was eingegeben wurde. Abgesehen davon ändert er nichts am Spiel, er misst nur und meldet.
+Er schaltet außerdem den Schimpfwortfilter aus: Chat, Namen und Kennzeichen zeigen genau das, was eingegeben wurde. Abgesehen davon ändert er nichts am Spiel, er misst nur und meldet.
 
 Changelog 1.4.0.3:
 - An die aktuelle Spielversion angepasst (modDesc-Version 116).]]></de>
