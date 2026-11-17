@@ -4,6 +4,10 @@
 
 # Patch notes
 
+## 1.4.0.2
+- Meets the GIANTS ModHub checks (TestRunner): textures, icon and modDesc brought up to date.
+- Errors are no longer hidden: they show in the log.
+
 ## 1.4.0.1
 
 - The author now shows as **DTM Mods, PropaineX** in the mod list.

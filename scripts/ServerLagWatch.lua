@@ -60,9 +60,9 @@ ServerLagWatch.lastHeartbeat = nil      -- player: real time the last heartbeat 
 ServerLagWatch.lagShownAt = nil         -- player: real time the lag message went up (nil = not shown)
 
 local function luaMemoryKb()
-    if gc ~= nil then
-        local ok, kb = pcall(gc, "count")
-        if ok then
+    if type(gc) == "function" then
+        local kb = gc("count")
+        if type(kb) == "number" then
             return kb
         end
     end
@@ -106,9 +106,9 @@ end
 local function describeOwner(object)
     local parts = {}
 
-    if object.getOwnerFarmId ~= nil then
+    if type(object.getOwnerFarmId) == "function" then
         local farmId = object:getOwnerFarmId()
-        local farm = g_farmManager ~= nil and g_farmManager:getFarmById(farmId) or nil
+        local farm = (g_farmManager ~= nil and farmId ~= nil) and g_farmManager:getFarmById(farmId) or nil
         if farm ~= nil and farm.name ~= nil and farm.name ~= "" then
             table.insert(parts, farm.name)
         elseif farmId ~= nil then
@@ -117,12 +117,15 @@ local function describeOwner(object)
     end
 
     -- an implement's driver sits in the tractor it hangs on
-    local root = object.rootVehicle or object
+    local root = object.rootVehicle
+    if type(root) ~= "table" then
+        root = object
+    end
     local who = nil
-    if root.getIsAIActive ~= nil and root:getIsAIActive() then
+    if type(root.getIsAIActive) == "function" and root:getIsAIActive() then
         who = "AI helper"
     end
-    if root.getIsControlled ~= nil and root:getIsControlled() and root.getControllerName ~= nil then
+    if type(root.getIsControlled) == "function" and root:getIsControlled() and type(root.getControllerName) == "function" then
         local name = root:getControllerName()
         if name ~= nil and name ~= "" then
             who = who ~= nil and (name .. " + AI helper") or name
@@ -140,7 +143,7 @@ local function describeOwner(object)
     end
 
     local node = object.rootNode
-    if node ~= nil and node ~= 0 and g_farmlandManager ~= nil then
+    if type(node) == "number" and node ~= 0 and entityExists(node) and g_farmlandManager ~= nil then
         local x, _, z = getWorldTranslation(node)
         local farmland = g_farmlandManager:getFarmlandAtWorldPosition(x, z)
         if farmland ~= nil and farmland.field ~= nil then
@@ -179,9 +182,9 @@ function ServerLagWatch.installSpecializationHook()
             end
             if ms >= ServerLagWatch.SLOW_CALL_MS or (kb ~= nil and kb >= ServerLagWatch.BIG_ALLOC_KB) then
                 local owner = object.configFileNameClean or (object.getName ~= nil and object:getName()) or "?"
-                local ok, who = pcall(describeOwner, object)
+                local who = type(object) == "table" and describeOwner(object) or nil
                 local name = string.format("%s:%s (%s)", tostring(spec.className), eventName, tostring(owner))
-                if ok and who ~= nil and who ~= "" then
+                if who ~= nil and who ~= "" then
                     name = name .. " - " .. who
                 end
                 ServerLagWatch.record(name, ms, kb)
@@ -261,19 +264,18 @@ function ServerLagWatch.endSave(reason)
 end
 
 --- Runs the game's own save and notes how long the call blocked.
+-- If the game's save raises an error, the error goes to the log as usual and updateSave cleans up
+-- in the next frame (see saveCallFailed).
 function ServerLagWatch.runSave(originalSave, mission, ...)
     local state = ServerLagWatch.saveState
     local m0 = luaMemoryKb()
     local t0 = clock()
     ServerLagWatch.inSave = true
-    local results = pack(pcall(originalSave, mission, ...))
+    local results = pack(originalSave(mission, ...))
     ServerLagWatch.inSave = false
     local ms = (clock() - t0) * 1000
     local m1 = luaMemoryKb()
 
-    if not results[1] then
-        Logging.error("[ServerLagWatch] Game save failed: %s", tostring(results[2]))
-    end
     if state ~= nil then
         state.returned = true
         state.lastStepAt = clock()
@@ -291,7 +293,20 @@ function ServerLagWatch.runSave(originalSave, mission, ...)
         ServerLagWatch.saveBlocks = true
         Logging.info("[ServerLagWatch] Saving froze the server in one go: next saves start %d ms after the message", ServerLagWatch.SAVE_DELAY_MS)
     end
-    return unpack(results, 2, results.n)
+    return unpack(results, 1, results.n)
+end
+
+--- Server: saveSavegame is a single call, so inSave still being set in a later frame means the
+--- game's save stopped with an error (shown in the log above). The save counts as returned, so the
+--- message comes down as usual and later saves are watched again.
+function ServerLagWatch.saveCallFailed()
+    ServerLagWatch.inSave = false
+    Logging.error("[ServerLagWatch] Game save failed, see the error above in the log")
+    local state = ServerLagWatch.saveState
+    if state ~= nil and not state.returned then
+        state.returned = true
+        state.lastStepAt = clock()
+    end
 end
 
 function ServerLagWatch.runPendingSave(reason)
@@ -436,6 +451,9 @@ end
 
 --- Server, every frame: starts a waiting save and decides when the running one is done.
 function ServerLagWatch.updateSave()
+    if ServerLagWatch.inSave then
+        ServerLagWatch.saveCallFailed()
+    end
     local now = clock()
     local pending = ServerLagWatch.pendingSave
     if pending ~= nil and now >= pending.runAt then
@@ -546,6 +564,7 @@ end
 
 function ServerLagWatch:deleteMap()
     self.installed = false
+    self.inSave = false
     self.saveState = nil
     self.pendingSave = nil
     self.saveShownAt = nil
