@@ -11,7 +11,7 @@ What to enter in the GIANTS ModHub upload form for this mod. Each text box below
 | Title English | Server Lag Watch |
 | Title German | Server Lag Watch |
 | Title French | Server Lag Watch |
-| Version | `1` `4` `0` `1` |
+| Version | `1` `5` `0` `0` |
 | Author | DTM Mods, PropaineX |
 | Manufacturer | Lizard |
 | Category 1 | Gameplay |
@@ -41,11 +41,18 @@ GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
 
 Whenever the server stops for longer than a quarter of a second, every player gets a notification on screen: how long the server froze and which mod script was the slowest at that moment. The same line is written to the server log, so the cause can be found afterwards.
 
+Time is added up per script over the whole frame, so many small calls still show ("300 ms in 20 calls"), and the game's own updateables, systems and managers are timed too. Each freeze line splits the time into watched scripts and time outside them: when "outside" is most of it, the engine or untimed base-game code caused the freeze, not a mod.
+
 Every time the server saves the game, every player sees big red "SERVER SAVE" letters in the middle of the screen until the save is done.
 
 When the server stops answering for 3 seconds, every player sees big red "SERVER LAG WATCH" letters in the middle of the screen until it answers again.
 
 It also turns off the profanity filter: chat, names and license plates show exactly what was typed. Apart from that it changes nothing in the game, it only measures and reports.
+
+Changelog 1.5.0.0:
+- Freeze lines no longer say "unknown" when no single call was slow: time is added up per script over the whole frame and the biggest total is named with its call count.
+- The game's own updateables, systems and managers (and mod updateables) are now timed too.
+- Every freeze line shows "Watched scripts: X ms, outside: Y ms", so engine or base-game freezes can be told apart from mod freezes.
 ```
 
 ## Description German
@@ -56,11 +63,18 @@ GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
 
 Sobald der Server länger als eine Viertelsekunde stehen bleibt, bekommt jeder Spieler eine Meldung auf den Bildschirm: wie lange der Server eingefroren war und welches Mod-Skript in diesem Moment am langsamsten war. Dieselbe Zeile wird ins Server-Log geschrieben, damit die Ursache auch später noch gefunden werden kann.
 
+Die Zeit wird pro Skript über den ganzen Frame zusammengezählt, damit auch viele kleine Aufrufe auffallen ("300 ms in 20 calls"), und die Updateables, Systeme und Manager des Spiels werden ebenfalls gemessen. Jede Hänger-Zeile teilt die Zeit in gemessene Skripte und Zeit außerhalb: Ist "outside" der größte Teil, war die Engine oder ungemessener Basisspiel-Code die Ursache, kein Mod.
+
 Jedes Mal, wenn der Server das Spiel speichert, sieht jeder Spieler große rote Buchstaben "SERVER SAVE" in der Mitte des Bildschirms, bis das Speichern fertig ist.
 
 Wenn der Server 3 Sekunden lang nicht antwortet, sieht jeder Spieler große rote Buchstaben "SERVER LAG WATCH" in der Mitte des Bildschirms, bis er wieder antwortet.
 
 Er schaltet außerdem den Schimpfwortfilter aus: Chat, Namen und Kennzeichen zeigen genau das, was eingegeben wurde. Abgesehen davon ändert er nichts am Spiel, er misst nur und meldet.
+
+Changelog 1.5.0.0:
+- Hänger-Zeilen sagen nicht mehr "unknown", wenn kein einzelner Aufruf langsam war: Die Zeit wird pro Skript über den ganzen Frame zusammengezählt und die größte Summe mit der Anzahl der Aufrufe genannt.
+- Updateables, Systeme und Manager des Spiels (und Updateables von Mods) werden jetzt auch gemessen.
+- Jede Hänger-Zeile zeigt "Watched scripts: X ms, outside: Y ms", damit Hänger durch Engine oder Basisspiel von Mod-Hängern unterschieden werden können.
 ```
 
 ## Description French
@@ -71,11 +85,18 @@ GitHub : https://github.com/DTM-Mods/FS25_ServerLagWatch
 
 Dès que le serveur s'arrête plus d'un quart de seconde, chaque joueur reçoit une notification à l'écran : la durée du gel et le script de mod le plus lent à ce moment-là. La même ligne est écrite dans le journal du serveur, pour retrouver la cause plus tard.
 
+Le temps est additionné par script sur toute l'image, pour que beaucoup de petits appels ressortent aussi ("300 ms in 20 calls"), et les updateables, systèmes et gestionnaires du jeu sont mesurés aussi. Chaque ligne de gel sépare le temps des scripts mesurés du temps en dehors : si "outside" en fait la plus grande partie, la cause est le moteur ou du code du jeu de base non mesuré, pas un mod.
+
 Chaque fois que le serveur sauvegarde la partie, chaque joueur voit de grandes lettres rouges "SERVER SAVE" au milieu de l'écran jusqu'à la fin de la sauvegarde.
 
 Quand le serveur ne répond plus pendant 3 secondes, chaque joueur voit de grandes lettres rouges "SERVER LAG WATCH" au milieu de l'écran jusqu'à ce qu'il réponde à nouveau.
 
 Il désactive aussi le filtre de grossièretés : chat, noms et plaques affichent exactement ce qui a été tapé. À part cela, il ne change rien au jeu, il mesure et signale seulement.
+
+Changelog 1.5.0.0 :
+- Les lignes de gel n'indiquent plus "unknown" quand aucun appel isolé n'était lent : le temps est additionné par script sur toute l'image et le plus gros total est nommé avec son nombre d'appels.
+- Les updateables, systèmes et gestionnaires du jeu (et les updateables des mods) sont maintenant mesurés aussi.
+- Chaque ligne de gel affiche "Watched scripts: X ms, outside: Y ms", pour distinguer les gels du moteur ou du jeu de base de ceux d'un mod.
 ```
 
 ## Screenshots

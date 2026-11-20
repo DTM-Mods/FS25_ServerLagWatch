@@ -4,6 +4,12 @@
 
 # Patch notes
 
+## 1.5.0.0
+
+- Freeze lines no longer say "unknown" just because no single call took 40 ms: time is now added up per script across the whole frame, and the script with the biggest total is named with its call count (for example "300 ms in 20 calls"). Time spent inside other timed calls is not counted twice.
+- The game's own updateables, systems and managers (environment, AI, vehicles, placeables, missions and more), and mod updateables, are now timed too, named "base game: Class:update" or "mod FS25_X: Class:update".
+- Every freeze line now ends with "Watched scripts: X ms, outside: Y ms". When "outside" is close to the freeze time, the engine or untimed base-game code caused it, not a mod.
+
 ## 1.4.0.4
 
 - Description in GIANTS' ModHub layout (category, price, upkeep or hotkeys at the top).

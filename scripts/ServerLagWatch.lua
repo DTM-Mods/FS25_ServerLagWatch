@@ -3,8 +3,10 @@
 -- Finds which mod freezes a dedicated server and tells every player when it happens.
 --
 -- How it works:
---  * Every vehicle/placeable script call (SpecializationUtil.raiseEvent) and every mod's update()
---    is timed. Lua runs its garbage cleanup inside whichever script is allocating at that moment,
+--  * Every vehicle/placeable script call (SpecializationUtil.raiseEvent), every mod's update(),
+--    every mission updateable and the game's systems/managers are timed, and the time is added up
+--    per script for the whole frame (see "Frame totals"). A freeze line names the biggest total and
+--    splits the freeze into watched script time and time outside (engine / untimed code). Lua runs its garbage cleanup inside whichever script is allocating at that moment,
 --    so the script that builds a huge amount of data is also the one that "pays" for the freeze.
 --  * When a whole server frame takes longer than FREEZE_MS, the server writes a line to its log
 --    and sends a notification to every connected player, naming the slowest script of that moment.
@@ -83,12 +85,77 @@ function ServerLagWatch.record(name, ms, kb)
     end
 end
 
---- Times one function call and records it.
-local function timed(name, func, ...)
-    local m0 = luaMemoryKb()
-    local t0 = clock()
-    func(...)
+---------------------------------------------------------------------------------------------
+-- Frame totals
+--
+-- Every timed call adds its own time (minus the timed calls inside it) to an entry for its
+-- script. Entries are made once per script and reused: a normal frame builds no strings and no
+-- tables. ServerLagWatch:update starts a new frame by bumping frameId; an entry with an old
+-- frameId counts as zero. On a freeze the entry with the biggest total of that frame is named.
+---------------------------------------------------------------------------------------------
+
+ServerLagWatch.frameId = 1
+ServerLagWatch.frameWatchedMs = 0       -- time spent in watched scripts this frame (top-level calls only)
+ServerLagWatch.touched = {}             -- entries used this frame (reused array)
+ServerLagWatch.touchedCount = 0
+ServerLagWatch.depth = 0                -- timed calls nested right now
+ServerLagWatch.childMs = {}             -- per depth: time of the timed calls inside it
+ServerLagWatch.namedEntries = {}        -- label -> entry (rare calls named by string, like the save)
+
+--- A frame-total entry. label is a string, or nil when describe(entry) builds it at report time.
+local function newEntry(label)
+    return {label = label, ms = 0, n = 0, frame = 0, maxMs = 0, object = nil, kind = nil, className = nil, eventName = nil}
+end
+
+--- Opens a timed call. Returns the start time.
+local function enter()
+    local depth = ServerLagWatch.depth + 1
+    ServerLagWatch.depth = depth
+    ServerLagWatch.childMs[depth] = 0
+    return clock()
+end
+
+--- Closes a timed call: adds its own time to entry. Returns the whole call time in ms.
+local function leave(entry, t0, object)
     local ms = (clock() - t0) * 1000
+    local lsw = ServerLagWatch
+    local depth = lsw.depth
+    local own = ms - (lsw.childMs[depth] or 0)
+    depth = depth - 1
+    if depth < 0 then
+        depth = 0
+    end
+    lsw.depth = depth
+    if depth > 0 then
+        lsw.childMs[depth] = (lsw.childMs[depth] or 0) + ms
+    else
+        lsw.frameWatchedMs = lsw.frameWatchedMs + ms
+    end
+
+    if entry.frame ~= lsw.frameId then
+        entry.frame = lsw.frameId
+        entry.ms = 0
+        entry.n = 0
+        entry.maxMs = 0
+        local count = lsw.touchedCount + 1
+        lsw.touchedCount = count
+        lsw.touched[count] = entry
+    end
+    entry.ms = entry.ms + own
+    entry.n = entry.n + 1
+    if own > entry.maxMs then
+        entry.maxMs = own
+        entry.object = object
+    end
+    return ms
+end
+
+--- Times one function call, adds it to entry and records it if it was slow.
+local function timed(entry, func, ...)
+    local m0 = luaMemoryKb()
+    local t0 = enter()
+    func(...)
+    local ms = leave(entry, t0, nil)
     local kb = nil
     if m0 ~= nil then
         local m1 = luaMemoryKb()
@@ -97,8 +164,19 @@ local function timed(name, func, ...)
         end
     end
     if ms >= ServerLagWatch.SLOW_CALL_MS or (kb ~= nil and kb >= ServerLagWatch.BIG_ALLOC_KB) then
-        ServerLagWatch.record(name, ms, kb)
+        ServerLagWatch.record(entry.label, ms, kb)
     end
+end
+
+--- Adds a call that was timed elsewhere (by label; only for rare calls such as the save).
+function ServerLagWatch.addNamed(label, ms)
+    local entry = ServerLagWatch.namedEntries[label]
+    if entry == nil then
+        entry = newEntry(label)
+        ServerLagWatch.namedEntries[label] = entry
+    end
+    local t0 = enter()
+    leave(entry, t0 - ms / 1000, nil)
 end
 
 --- Who is responsible for a vehicle or placeable, and where it is: "Farm 2 / JohnDoe - Field 14".
@@ -161,6 +239,7 @@ end
 --- Times every vehicle and placeable specialization call.
 function ServerLagWatch.installSpecializationHook()
     local originalRaiseEvent = SpecializationUtil.raiseEvent
+    local entries = setmetatable({}, {__mode = "k"})   -- spec -> eventName -> entry
 
     SpecializationUtil.raiseEvent = function(object, eventName, ...)
         local listeners = object.eventListeners ~= nil and object.eventListeners[eventName] or nil
@@ -169,10 +248,24 @@ function ServerLagWatch.installSpecializationHook()
         end
 
         for _, spec in ipairs(listeners) do
-            local t0 = clock()
+            local bySpec = entries[spec]
+            if bySpec == nil then
+                bySpec = {}
+                entries[spec] = bySpec
+            end
+            local entry = bySpec[eventName]
+            if entry == nil then
+                entry = newEntry(nil)
+                entry.kind = "spec"
+                entry.className = spec.className
+                entry.eventName = eventName
+                bySpec[eventName] = entry
+            end
+
             local m0 = luaMemoryKb()
+            local t0 = enter()
             spec[eventName](object, ...)
-            local ms = (clock() - t0) * 1000
+            local ms = leave(entry, t0, object)
             local kb = nil
             if m0 ~= nil then
                 local m1 = luaMemoryKb()
@@ -181,16 +274,24 @@ function ServerLagWatch.installSpecializationHook()
                 end
             end
             if ms >= ServerLagWatch.SLOW_CALL_MS or (kb ~= nil and kb >= ServerLagWatch.BIG_ALLOC_KB) then
-                local owner = object.configFileNameClean or (object.getName ~= nil and object:getName()) or "?"
-                local who = type(object) == "table" and describeOwner(object) or nil
-                local name = string.format("%s:%s (%s)", tostring(spec.className), eventName, tostring(owner))
-                if who ~= nil and who ~= "" then
-                    name = name .. " - " .. who
-                end
-                ServerLagWatch.record(name, ms, kb)
+                ServerLagWatch.record(ServerLagWatch.describeSpecCall(spec.className, eventName, object), ms, kb)
             end
         end
     end
+end
+
+--- "Class:event (vehicle) - farm / driver - field". Only called when reporting.
+function ServerLagWatch.describeSpecCall(className, eventName, object)
+    local name = string.format("%s:%s", tostring(className), tostring(eventName))
+    if object ~= nil then
+        local owner = object.configFileNameClean or (object.getName ~= nil and object:getName()) or "?"
+        name = name .. " (" .. tostring(owner) .. ")"
+        local who = type(object) == "table" and describeOwner(object) or nil
+        if who ~= nil and who ~= "" then
+            name = name .. " - " .. who
+        end
+    end
+    return name
 end
 
 --- Times every mod's own update() (mod event listeners found in each mod's globals).
@@ -206,14 +307,174 @@ function ServerLagWatch.installModListenerHooks()
                     local update = rawget(value, "update")
                     if type(update) == "function" and (rawget(value, "loadMap") ~= nil or rawget(value, "deleteMap") ~= nil) then
                         wrapped[value] = true
-                        local name = modName .. "." .. tostring(key) .. ":update"
+                        local entry = newEntry("mod " .. modName .. ": " .. tostring(key) .. ":update")
                         value.update = function(...)
-                            timed(name, update, ...)
+                            timed(entry, update, ...)
                         end
                         count = count + 1
                     end
                 end
             end
+        end
+    end
+
+    return count
+end
+
+---------------------------------------------------------------------------------------------
+-- Updateables and managers
+--
+-- Objects in g_currentMission's updateables (base game and mods) and the managers/systems the
+-- mission updates each frame get their update() timed. The timer is put on the object itself and
+-- looks the real update up on its class at every call, so later hooks on the class still run.
+-- Names ("base game: Environment:update", "mod FS25_X: Foo:update") are worked out once, when
+-- the object is wrapped, never in a normal frame.
+---------------------------------------------------------------------------------------------
+
+ServerLagWatch.wrappedObjects = setmetatable({}, {__mode = "k"})
+ServerLagWatch.classNames = setmetatable({}, {__mode = "k"})
+
+-- managers and systems the mission may update each frame (whatever of these exists is timed)
+ServerLagWatch.MISSION_SYSTEMS = {
+    "environment", "aiSystem", "vehicleSystem", "placeableSystem", "itemSystem", "handToolSystem",
+    "foliageSystem", "growthSystem", "trafficSystem", "economyManager", "slotSystem", "guidedTour",
+    "husbandrySystem", "playerSystem", "weedSystem", "snowSystem", "stoneSystem", "fieldGroundSystem",
+    "aiMessageManager", "productionChainManager"
+}
+ServerLagWatch.GLOBAL_MANAGERS = {
+    "g_missionManager", "g_densityMapHeightManager", "g_treePlantManager", "g_farmManager",
+    "g_fieldManager", "g_farmlandManager", "g_npcManager", "g_soundManager", "g_animationManager",
+    "g_effectManager", "g_achievementManager", "g_collectiblesManager", "g_currentMission"
+}
+
+--- The global name of an object's class ("Environment"), or nil. Cached per class table.
+local function className(object)
+    local mt = getmetatable(object)
+    local class = mt ~= nil and type(mt.__index) == "table" and mt.__index or nil
+    if class == nil then
+        return nil
+    end
+    local cached = ServerLagWatch.classNames[class]
+    if cached ~= nil then
+        return cached or nil
+    end
+    local found = false
+    if ClassUtil ~= nil and type(ClassUtil.getClassNameByObject) == "function" then
+        local name = ClassUtil.getClassNameByObject(object)
+        if type(name) == "string" and name ~= "" then
+            found = name
+        end
+    end
+    if not found then
+        for name, value in pairs(_G) do
+            if value == class and type(name) == "string" then
+                found = name
+                break
+            end
+        end
+    end
+    ServerLagWatch.classNames[class] = found
+    return found or nil
+end
+
+--- "base game" or "mod FS25_X", from the file a function was written in. nil if unknown.
+local function sourceOf(func)
+    if type(debug) ~= "table" or type(debug.getinfo) ~= "function" then
+        return nil
+    end
+    local info = debug.getinfo(func, "S")
+    if type(info) ~= "table" or type(info.source) ~= "string" then
+        return nil
+    end
+    local mod = info.source:match("[/\\]mods[/\\]([^/\\]+)")
+    if mod ~= nil then
+        return "mod " .. (mod:gsub("%.zip$", ""))
+    end
+    if info.source:find("dataS", 1, true) ~= nil then
+        return "base game"
+    end
+    return nil
+end
+
+--- Puts a timer on object:update. fallbackName names it when its class cannot be found.
+function ServerLagWatch.wrapUpdate(object, fallbackName)
+    if type(object) ~= "table" or object == ServerLagWatch or ServerLagWatch.wrappedObjects[object] then
+        return false
+    end
+    if object == g_currentMission then
+        -- the mission's own update runs everything else; timing it would hide the real culprit
+        return false
+    end
+    local original = rawget(object, "update")
+    local mt = getmetatable(object)
+    local class = mt ~= nil and type(mt.__index) == "table" and mt.__index or nil
+    local current = original or (class ~= nil and class.update) or nil
+    if type(current) ~= "function" then
+        return false
+    end
+    ServerLagWatch.wrappedObjects[object] = true
+
+    local name = className(object) or fallbackName or "?"
+    local source = sourceOf(current) or "base game?"
+    local entry = newEntry(source .. ": " .. name .. ":update")
+
+    object.update = function(...)
+        local func = original
+        if func == nil then
+            func = class.update
+        end
+        timed(entry, func, ...)
+    end
+    return true
+end
+
+--- Times the mission's updateables (now and every one added later) and its managers.
+function ServerLagWatch.installUpdateableHooks()
+    local mission = g_currentMission
+    local count = 0
+    if mission == nil then
+        return 0
+    end
+
+    local function wrapEntry(key, value)
+        local done = false
+        if type(value) == "table" then
+            if type(value.object) == "table" then
+                done = ServerLagWatch.wrapUpdate(value.object, "updateable")
+            else
+                done = ServerLagWatch.wrapUpdate(value, "updateable")
+            end
+        end
+        if not done and type(key) == "table" then
+            done = ServerLagWatch.wrapUpdate(key, "updateable")
+        end
+        if done then
+            count = count + 1
+        end
+    end
+
+    if type(mission.updateables) == "table" then
+        for key, value in pairs(mission.updateables) do
+            wrapEntry(key, value)
+        end
+    end
+
+    if type(mission.addUpdateable) == "function" then
+        local originalAdd = mission.addUpdateable
+        mission.addUpdateable = function(self, object, ...)
+            ServerLagWatch.wrapUpdate(object, "updateable")
+            return originalAdd(self, object, ...)
+        end
+    end
+
+    for _, field in ipairs(ServerLagWatch.MISSION_SYSTEMS) do
+        if ServerLagWatch.wrapUpdate(rawget(mission, field), "mission." .. field) then
+            count = count + 1
+        end
+    end
+    for _, global in ipairs(ServerLagWatch.GLOBAL_MANAGERS) do
+        if ServerLagWatch.wrapUpdate(_G[global], global) then
+            count = count + 1
         end
     end
 
@@ -289,6 +550,7 @@ function ServerLagWatch.runSave(originalSave, mission, ...)
             (m0 ~= nil and m1 ~= nil) and string.format(", Lua memory %+d MB", math.floor((m1 - m0) / 1024)) or "")
     end
     ServerLagWatch.record("game save (saveSavegame)", ms, nil) -- so a freeze report names the save
+    ServerLagWatch.addNamed("game save (saveSavegame)", ms)
     if ms >= ServerLagWatch.SAVE_BLOCKING_MS and not ServerLagWatch.saveBlocks then
         ServerLagWatch.saveBlocks = true
         Logging.info("[ServerLagWatch] Saving froze the server in one go: next saves start %d ms after the message", ServerLagWatch.SAVE_DELAY_MS)
@@ -554,12 +816,13 @@ function ServerLagWatch:loadMap(filename)
 
     self:installSpecializationHook()
     local count = self:installModListenerHooks()
+    local updateables = self.installUpdateableHooks()
     self.installSaveHooks()
     self.installed = true
 
     local kb = luaMemoryKb()
-    Logging.info("[ServerLagWatch] Watching %d mod update scripts and all vehicle/placeable scripts. Freeze threshold %d ms. Lua memory readout %s.",
-        count, self.FREEZE_MS, kb ~= nil and string.format("available (%d MB now)", math.floor(kb / 1024)) or "not available")
+    Logging.info("[ServerLagWatch] Watching %d mod update scripts, %d updateables/managers and all vehicle/placeable scripts. Freeze threshold %d ms. Lua memory readout %s.",
+        count, updateables, self.FREEZE_MS, kb ~= nil and string.format("available (%d MB now)", math.floor(kb / 1024)) or "not available")
 end
 
 function ServerLagWatch:deleteMap()
@@ -589,16 +852,22 @@ function ServerLagWatch:update(dt)
     self.updateHeartbeat(now)
 
     if dt >= self.FREEZE_MS then
+        local top = self.frameCulprit()
         local worst = self.worst
         local culprit = "unknown"
-        if worst ~= nil then
+        if top ~= nil and (worst == nil or top.ms >= worst.ms) then
+            culprit = string.format("%s, %d ms in %d call%s", top.name, math.floor(top.ms), top.n, top.n == 1 and "" or "s")
+        elseif worst ~= nil then
+            -- a single slow call bigger than any total of this frame
             culprit = string.format("%s, %d ms", worst.name, math.floor(worst.ms))
             if worst.kb ~= nil then
                 culprit = culprit .. string.format(", +%d MB", math.floor(worst.kb / 1024))
             end
         end
+        local watched = math.min(self.frameWatchedMs, dt)
 
-        Logging.info("[ServerLagWatch] SERVER FROZE for %d ms. Slowest script: %s", math.floor(dt), culprit)
+        Logging.info("[ServerLagWatch] SERVER FROZE for %d ms. Slowest script: %s. Watched scripts: %d ms, outside: %d ms",
+            math.floor(dt), culprit, math.floor(watched), math.floor(dt - watched))
 
         local now = g_time or 0
         if now - self.lastNotify >= self.NOTIFY_COOLDOWN_MS then
@@ -623,6 +892,43 @@ function ServerLagWatch:update(dt)
         -- slow calls that did not cause a freeze are forgotten after a minute
         self.worst = nil
     end
+
+    self.newFrame()
+end
+
+--- Starts a new frame for the frame totals (no tables, no strings).
+function ServerLagWatch.newFrame()
+    local lsw = ServerLagWatch
+    local touched = lsw.touched
+    for i = lsw.touchedCount, 1, -1 do
+        touched[i] = nil
+    end
+    lsw.touchedCount = 0
+    lsw.frameWatchedMs = 0
+    lsw.depth = 0
+    lsw.frameId = lsw.frameId + 1
+end
+
+--- The script with the biggest total this frame: {name, ms, n}, or nil. Only called on a freeze.
+function ServerLagWatch.frameCulprit()
+    local best = nil
+    for i = 1, ServerLagWatch.touchedCount do
+        local entry = ServerLagWatch.touched[i]
+        if best == nil or entry.ms > best.ms then
+            best = entry
+        end
+    end
+    if best == nil or best.ms < 1 then
+        return nil
+    end
+    local name = best.label
+    if name == nil and best.kind == "spec" then
+        name = "vehicle/placeable " .. ServerLagWatch.describeSpecCall(best.className, best.eventName, best.object)
+        if best.n > 1 then
+            name = name .. " (slowest one)"
+        end
+    end
+    return {name = name or "?", ms = best.ms, n = best.n}
 end
 
 --- Shown on every player's screen.

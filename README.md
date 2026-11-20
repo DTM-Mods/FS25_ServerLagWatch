@@ -28,6 +28,7 @@
 </p>
 
 - **Freeze alerts**: when the server stops for longer than a quarter of a second, every player gets a notification with how long it froze and which mod script was the slowest at that moment. The same line goes into the server log, so the cause can be found afterwards.
+- **Whole-frame totals**: time is added up per script over the whole frame, so many small calls still show ("300 ms in 20 calls"). Base-game and mod updateables and the game's systems and managers are timed too. Every freeze line ends with "Watched scripts: X ms, outside: Y ms": when "outside" is most of it, the engine or untimed base-game code is the cause, not a mod.
 - **Who and where**: a slow vehicle or placeable is named with its farm, its driver (player, AI helper or no driver) and where it is (field, farmland or off-field).
 - **SERVER SAVE**: every time the server saves, every player sees big red "SERVER SAVE" letters in the middle of the screen until the save is done. Slow file writes during the save are logged by file name.
 - **SERVER LAG WATCH**: when the server stops answering for 3 seconds, every player sees big red "SERVER LAG WATCH" letters until it answers again.
