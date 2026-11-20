@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+    <elements>
+        <e k="slw_serverSave" v="服务器保存中"/>
+        <e k="slw_serverFroze" v="服务器卡住 %s 秒 - %s"/>
+        <e k="slw_unknown" v="未知"/>
+        <e k="slw_farm" v="农场 %s"/>
+        <e k="slw_aiHelper" v="AI 帮手"/>
+        <e k="slw_noDriver" v="无驾驶员"/>
+        <e k="slw_field" v="田地 %s"/>
+        <e k="slw_farmland" v="农地 %s"/>
+        <e k="slw_offField" v="田地外"/>
+        <e k="slw_baseGame" v="基础游戏"/>
+        <e k="slw_mod" v="模组 %s"/>
+        <e k="slw_vehiclePlaceable" v="车辆/建筑"/>
+        <e k="slw_slowestOne" v="最慢的一个"/>
+        <e k="slw_gameSave" v="游戏保存"/>
+        <e k="slw_msInCalls" v="%s ms（%s 次调用）"/>
+        <e k="slw_msInOneCall" v="%s ms（1 次调用）"/>
+    </elements>
+</l10n>

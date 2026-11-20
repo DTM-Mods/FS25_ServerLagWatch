@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+    <elements>
+        <e k="slw_serverSave" v="SERVERN SPARAR"/>
+        <e k="slw_serverFroze" v="Servern frös %s s - %s"/>
+        <e k="slw_unknown" v="okänt"/>
+        <e k="slw_farm" v="Gård %s"/>
+        <e k="slw_aiHelper" v="AI-medhjälpare"/>
+        <e k="slw_noDriver" v="ingen förare"/>
+        <e k="slw_field" v="Fält %s"/>
+        <e k="slw_farmland" v="markområde %s"/>
+        <e k="slw_offField" v="utanför fälten"/>
+        <e k="slw_baseGame" v="grundspel"/>
+        <e k="slw_mod" v="mod %s"/>
+        <e k="slw_vehiclePlaceable" v="fordon/byggnad"/>
+        <e k="slw_slowestOne" v="den långsammaste"/>
+        <e k="slw_gameSave" v="sparning"/>
+        <e k="slw_msInCalls" v="%s ms i %s anrop"/>
+        <e k="slw_msInOneCall" v="%s ms i 1 anrop"/>
+    </elements>
+</l10n>

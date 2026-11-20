@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+    <elements>
+        <e k="slw_serverSave" v="SUNUCU KAYDEDİYOR"/>
+        <e k="slw_serverFroze" v="Sunucu %s sn dondu - %s"/>
+        <e k="slw_unknown" v="bilinmiyor"/>
+        <e k="slw_farm" v="Çiftlik %s"/>
+        <e k="slw_aiHelper" v="YZ yardımcısı"/>
+        <e k="slw_noDriver" v="sürücü yok"/>
+        <e k="slw_field" v="Tarla %s"/>
+        <e k="slw_farmland" v="arazi %s"/>
+        <e k="slw_offField" v="tarla dışı"/>
+        <e k="slw_baseGame" v="ana oyun"/>
+        <e k="slw_mod" v="mod %s"/>
+        <e k="slw_vehiclePlaceable" v="araç/yerleştirilebilir"/>
+        <e k="slw_slowestOne" v="en yavaşı"/>
+        <e k="slw_gameSave" v="oyun kaydı"/>
+        <e k="slw_msInCalls" v="%s ms, çağrı: %s"/>
+        <e k="slw_msInOneCall" v="%s ms, 1 çağrı"/>
+    </elements>
+</l10n>

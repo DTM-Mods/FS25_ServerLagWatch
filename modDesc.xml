@@ -23,28 +23,538 @@ When the server stops answering for 3 seconds, every player sees big red "SERVER
 Apart from that it changes nothing in the game, it only measures and reports.
 
 Changelog 1.6.0.0:
-- The profanity filter moved to its own mod, FS25_NoProfanityFilter. Install that one to keep chat, names and license plates unfiltered.]]></en>
+- The profanity filter moved to its own mod, FS25_NoProfanityFilter. Install that one to keep chat, names and license plates unfiltered.
+
+Changelog 1.5.1.0:
+- The "SERVER SAVE" letters and the freeze notification are in all 27 game languages: every player reads them in their own language.
+- Description in all 27 languages.]]></en>
         <de><![CDATA[Beschreibung: Findet heraus, welcher Mod deinen Server einfrieren lässt. Jeder Hänger über eine Viertelsekunde wird jedem Spieler angezeigt und ins Server-Log geschrieben, mit dem Mod-Skript oder dem Speichern als Ursache.
 Tastenkombinationen: keine, der Mod arbeitet von selbst. Auf dem Server und im Spiel jedes Spielers installieren.
 GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
 
 Sobald der Server länger als eine Viertelsekunde stehen bleibt, bekommt jeder Spieler eine Meldung auf den Bildschirm: wie lange der Server eingefroren war und welches Mod-Skript in diesem Moment am langsamsten war. Dieselbe Zeile wird ins Server-Log geschrieben, damit die Ursache auch später noch gefunden werden kann.
 
-Die Zeit wird pro Skript über den ganzen Frame zusammengezählt, damit auch viele kleine Aufrufe auffallen ("300 ms in 20 calls"), und die Updateables, Systeme und Manager des Spiels werden ebenfalls gemessen. Jede Hänger-Zeile teilt die Zeit in gemessene Skripte und Zeit außerhalb: Ist "outside" der größte Teil, war die Engine oder ungemessener Basisspiel-Code die Ursache, kein Mod.
+Die Zeit wird pro Skript über den ganzen Frame zusammengezählt, damit auch viele kleine Aufrufe auffallen ("300 ms in 20 Aufrufen"), und die Updateables, Systeme und Manager des Spiels werden ebenfalls gemessen. Jede Hänger-Zeile im Log teilt die Zeit in gemessene Skripte und Zeit außerhalb: Ist "outside" der größte Teil, war die Engine oder ungemessener Basisspiel-Code die Ursache, kein Mod.
 
-Jedes Mal, wenn der Server das Spiel speichert, sieht jeder Spieler große rote Buchstaben "SERVER SAVE" in der Mitte des Bildschirms, bis das Speichern fertig ist.
+Jedes Mal, wenn der Server das Spiel speichert, sieht jeder Spieler große rote Buchstaben "SERVER SPEICHERT" in der Mitte des Bildschirms, bis das Speichern fertig ist.
 
 Wenn der Server 3 Sekunden lang nicht antwortet, sieht jeder Spieler große rote Buchstaben "SERVER LAG WATCH" in der Mitte des Bildschirms, bis er wieder antwortet.
 
 Abgesehen davon ändert er nichts am Spiel, er misst nur und meldet.
 
 Changelog 1.6.0.0:
-- Der Schimpfwortfilter ist in einen eigenen Mod umgezogen, FS25_NoProfanityFilter. Diesen installieren, damit Chat, Namen und Kennzeichen weiter ungefiltert bleiben.]]></de>
+- Der Schimpfwortfilter ist in einen eigenen Mod umgezogen, FS25_NoProfanityFilter. Diesen installieren, damit Chat, Namen und Kennzeichen weiter ungefiltert bleiben.
+
+Changelog 1.5.1.0:
+- Die Buchstaben "SERVER SPEICHERT" und die Hänger-Meldung gibt es in allen 27 Sprachen des Spiels: Jeder Spieler liest sie in seiner eigenen Sprache.
+- Beschreibung in allen 27 Sprachen.]]></de>
+        <fr><![CDATA[Description : trouve le mod qui fait geler ton serveur. Chaque gel de plus d'un quart de seconde est affiché à tous les joueurs et écrit dans le journal du serveur, avec le script du mod ou la sauvegarde qui l'a causé.
+Raccourcis : aucun, il fonctionne tout seul. À installer sur le serveur et dans le jeu de chaque joueur.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
+
+Dès que le serveur s'arrête plus d'un quart de seconde, chaque joueur reçoit une notification à l'écran : combien de temps le serveur a gelé et quel script de mod était le plus lent à ce moment-là. La même ligne est écrite dans le journal du serveur, pour retrouver la cause plus tard.
+
+Le temps est additionné par script sur toute l'image, donc beaucoup de petits appels apparaissent aussi ("300 ms en 20 appels"), et les updateables, systèmes et gestionnaires du jeu sont mesurés eux aussi. Chaque ligne de gel du journal sépare le temps des scripts mesurés et le temps en dehors : quand "outside" en est la plus grande partie, c'est le moteur ou du code non mesuré du jeu de base qui a causé le gel, pas un mod.
+
+Chaque fois que le serveur sauvegarde la partie, chaque joueur voit de grandes lettres rouges "SAUVEGARDE SERVEUR" au milieu de l'écran jusqu'à la fin de la sauvegarde.
+
+Quand le serveur ne répond plus pendant 3 secondes, chaque joueur voit de grandes lettres rouges "SERVER LAG WATCH" au milieu de l'écran jusqu'à ce qu'il réponde à nouveau.
+
+À part ça, il ne change rien au jeu, il mesure et signale seulement.
+
+Changelog 1.6.0.0:
+- Le filtre de grossièretés a déménagé dans son propre mod, FS25_NoProfanityFilter. Installe-le pour garder le chat, les noms et les plaques non filtrés.
+
+Changelog 1.5.1.0:
+- Les lettres "SAUVEGARDE SERVEUR" et la notification de gel existent dans les 27 langues du jeu : chaque joueur les lit dans sa propre langue.
+- Description dans les 27 langues.]]></fr>
+        <fc><![CDATA[Description : trouve le mod qui fait geler ton serveur. Chaque gel de plus d'un quart de seconde est affiché à tous les joueurs et écrit dans le journal du serveur, avec le script du mod ou la sauvegarde qui l'a causé.
+Raccourcis : aucun, il fonctionne tout seul. À installer sur le serveur et dans le jeu de chaque joueur.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
+
+Dès que le serveur s'arrête plus d'un quart de seconde, chaque joueur reçoit une notification à l'écran : combien de temps le serveur a gelé et quel script de mod était le plus lent à ce moment-là. La même ligne est écrite dans le journal du serveur, pour retrouver la cause plus tard.
+
+Le temps est additionné par script sur toute l'image, donc beaucoup de petits appels apparaissent aussi ("300 ms en 20 appels"), et les updateables, systèmes et gestionnaires du jeu sont mesurés eux aussi. Chaque ligne de gel du journal sépare le temps des scripts mesurés et le temps en dehors : quand "outside" en est la plus grande partie, c'est le moteur ou du code non mesuré du jeu de base qui a causé le gel, pas un mod.
+
+Chaque fois que le serveur sauvegarde la partie, chaque joueur voit de grandes lettres rouges "SERVEUR EN SAUVEGARDE" au milieu de l'écran jusqu'à la fin de la sauvegarde.
+
+Quand le serveur ne répond plus pendant 3 secondes, chaque joueur voit de grandes lettres rouges "SERVER LAG WATCH" au milieu de l'écran jusqu'à ce qu'il réponde à nouveau.
+
+À part ça, il ne change rien au jeu, il mesure et signale seulement.
+
+Changelog 1.6.0.0:
+- Le filtre de grossièretés a déménagé dans son propre mod, FS25_NoProfanityFilter. Installe-le pour garder le clavardage, les noms et les plaques non filtrés.
+
+Changelog 1.5.1.0:
+- Les lettres "SERVEUR EN SAUVEGARDE" et la notification de gel sont offertes dans les 27 langues du jeu : chaque joueur les lit dans sa propre langue.
+- Description dans les 27 langues.]]></fc>
+        <es><![CDATA[Descripción: averigua qué mod congela tu servidor. Cada congelación de más de un cuarto de segundo se muestra a todos los jugadores y se escribe en el registro del servidor, con el script del mod o el guardado que la causó.
+Teclas: ninguna, funciona solo. Instálalo en el servidor y en el juego de cada jugador.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
+
+Siempre que el servidor se detiene más de un cuarto de segundo, cada jugador recibe una notificación en pantalla: cuánto tiempo se congeló el servidor y qué script de mod fue el más lento en ese momento. La misma línea se escribe en el registro del servidor, para poder encontrar la causa después.
+
+El tiempo se suma por script durante todo el fotograma, así que también aparecen muchas llamadas pequeñas ("300 ms en 20 llamadas"), y los updateables, sistemas y gestores del propio juego también se miden. Cada línea de congelación del registro divide el tiempo entre scripts medidos y tiempo fuera de ellos: cuando "outside" es la mayor parte, la congelación la causó el motor o código del juego base no medido, no un mod.
+
+Cada vez que el servidor guarda la partida, cada jugador ve grandes letras rojas "GUARDANDO SERVIDOR" en el centro de la pantalla hasta que termina el guardado.
+
+Cuando el servidor deja de responder durante 3 segundos, cada jugador ve grandes letras rojas "SERVER LAG WATCH" en el centro de la pantalla hasta que vuelve a responder.
+
+Aparte de eso no cambia nada del juego, solo mide e informa.
+
+Changelog 1.6.0.0:
+- El filtro de palabrotas pasó a su propio mod, FS25_NoProfanityFilter. Instálalo para que el chat, los nombres y las matrículas sigan sin filtrar.
+
+Changelog 1.5.1.0:
+- Las letras "GUARDANDO SERVIDOR" y la notificación de congelación están en los 27 idiomas del juego: cada jugador las lee en su propio idioma.
+- Descripción en los 27 idiomas.]]></es>
+        <ea><![CDATA[Descripción: averigua qué mod cuelga tu servidor. Cada congelamiento de más de un cuarto de segundo se muestra a todos los jugadores y se escribe en el registro del servidor, con el script del mod o el guardado que la causó.
+Teclas: ninguna, funciona solo. Instálalo en el servidor y en el juego de cada jugador.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
+
+Siempre que el servidor se detiene más de un cuarto de segundo, cada jugador recibe una notificación en pantalla: cuánto tiempo se colgó el servidor y qué script de mod fue el más lento en ese momento. La misma línea se escribe en el registro del servidor, para poder encontrar la causa después.
+
+El tiempo se suma por script durante todo el fotograma, así que también aparecen muchas llamadas pequeñas ("300 ms en 20 llamadas"), y los updateables, sistemas y gestores del propio juego también se miden. Cada línea de congelamiento del registro divide el tiempo entre scripts medidos y tiempo fuera de ellos: cuando "outside" es la mayor parte, el congelamiento lo causó el motor o código del juego base no medido, no un mod.
+
+Cada vez que el servidor guarda la partida, cada jugador ve grandes letras rojas "SERVIDOR GUARDANDO" en el centro de la pantalla hasta que termina el guardado.
+
+Cuando el servidor deja de responder durante 3 segundos, cada jugador ve grandes letras rojas "SERVER LAG WATCH" en el centro de la pantalla hasta que vuelve a responder.
+
+Aparte de eso no cambia nada del juego, solo mide e informa.
+
+Changelog 1.6.0.0:
+- El filtro de groserías pasó a su propio mod, FS25_NoProfanityFilter. Instálalo para que el chat, los nombres y las placas sigan sin filtrar.
+
+Changelog 1.5.1.0:
+- Las letras "SERVIDOR GUARDANDO" y la notificación de congelamiento están en los 27 idiomas del juego: cada jugador las lee en su propio idioma.
+- Descripción en los 27 idiomas.]]></ea>
+        <it><![CDATA[Descrizione: scopre quale mod blocca il tuo server. Ogni blocco di oltre un quarto di secondo viene mostrato a tutti i giocatori e scritto nel log del server, con lo script del mod o il salvataggio che l'ha causato.
+Tasti: nessuno, funziona da solo. Va installato sul server e nel gioco di ogni giocatore.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
+
+Ogni volta che il server si ferma per più di un quarto di secondo, ogni giocatore riceve una notifica sullo schermo: per quanto tempo il server si è bloccato e quale script di mod era il più lento in quel momento. La stessa riga viene scritta nel log del server, così la causa si può trovare anche dopo.
+
+Il tempo viene sommato per script su tutto il fotogramma, quindi compaiono anche tante piccole chiamate ("300 ms in 20 chiamate"), e vengono misurati anche gli updateable, i sistemi e i gestori del gioco. Ogni riga di blocco nel log divide il tempo tra script misurati e tempo al di fuori: quando "outside" è la parte maggiore, il blocco l'ha causato il motore o codice del gioco base non misurato, non un mod.
+
+Ogni volta che il server salva la partita, ogni giocatore vede grandi lettere rosse "SALVATAGGIO SERVER" al centro dello schermo finché il salvataggio non è finito.
+
+Quando il server smette di rispondere per 3 secondi, ogni giocatore vede grandi lettere rosse "SERVER LAG WATCH" al centro dello schermo finché non risponde di nuovo.
+
+A parte questo non cambia nulla nel gioco, misura e segnala soltanto.
+
+Changelog 1.6.0.0:
+- Il filtro delle parolacce è passato a una mod a sé, FS25_NoProfanityFilter. Installala per lasciare chat, nomi e targhe senza filtro.
+
+Changelog 1.5.1.0:
+- Le lettere "SALVATAGGIO SERVER" e la notifica di blocco sono in tutte le 27 lingue del gioco: ogni giocatore le legge nella propria lingua.
+- Descrizione in tutte le 27 lingue.]]></it>
+        <pt><![CDATA[Descrição: descobre que mod faz o teu servidor congelar. Cada congelamento de mais de um quarto de segundo é mostrado a todos os jogadores e escrito no registo do servidor, com o script do mod ou a gravação que o causou.
+Teclas: nenhuma, funciona sozinho. Instala-o no servidor e no jogo de cada jogador.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
+
+Sempre que o servidor para mais de um quarto de segundo, cada jogador recebe uma notificação no ecrã: quanto tempo o servidor congelou e que script de mod foi o mais lento nesse momento. A mesma linha é escrita no registo do servidor, para que a causa possa ser encontrada mais tarde.
+
+O tempo é somado por script durante todo o fotograma, por isso muitas chamadas pequenas também aparecem ("300 ms em 20 chamadas"), e os updateables, sistemas e gestores do próprio jogo também são medidos. Cada linha de congelamento no registo divide o tempo entre scripts medidos e tempo fora deles: quando "outside" é a maior parte, foi o motor ou código não medido do jogo base que causou o congelamento, não um mod.
+
+Sempre que o servidor grava o jogo, cada jogador vê grandes letras vermelhas "SERVIDOR A GUARDAR" no meio do ecrã até a gravação terminar.
+
+Quando o servidor deixa de responder durante 3 segundos, cada jogador vê grandes letras vermelhas "SERVER LAG WATCH" no meio do ecrã até ele voltar a responder.
+
+Fora isso não muda nada no jogo, só mede e informa.
+
+Changelog 1.6.0.0:
+- O filtro de palavrões passou para um mod próprio, FS25_NoProfanityFilter. Instala esse para manter o chat, os nomes e as matrículas sem filtro.
+
+Changelog 1.5.1.0:
+- As letras "SERVIDOR A GUARDAR" e a notificação de congelamento estão nas 27 línguas do jogo: cada jogador lê-as na sua própria língua.
+- Descrição nas 27 línguas.]]></pt>
+        <br><![CDATA[Descrição: descobre qual mod trava o seu servidor. Cada travamento de mais de um quarto de segundo é mostrado a todos os jogadores e escrito no log do servidor, com o script do mod ou o salvamento que o causou.
+Teclas: nenhuma, funciona sozinho. Instale no servidor e no jogo de cada jogador.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
+
+Sempre que o servidor para por mais de um quarto de segundo, cada jogador recebe uma notificação na tela: quanto tempo o servidor travou e qual script de mod foi o mais lento naquele momento. A mesma linha é escrita no log do servidor, para que a causa possa ser encontrada depois.
+
+O tempo é somado por script durante o quadro inteiro, então muitas chamadas pequenas também aparecem ("300 ms em 20 chamadas"), e os updateables, sistemas e gerenciadores do próprio jogo também são medidos. Cada linha de travamento no log divide o tempo entre scripts medidos e tempo fora deles: quando "outside" é a maior parte, foi o motor ou código não medido do jogo base que causou o travamento, não um mod.
+
+Toda vez que o servidor salva o jogo, cada jogador vê grandes letras vermelhas "SALVANDO SERVIDOR" no meio da tela até o salvamento terminar.
+
+Quando o servidor para de responder por 3 segundos, cada jogador vê grandes letras vermelhas "SERVER LAG WATCH" no meio da tela até ele responder de novo.
+
+Fora isso não muda nada no jogo, só mede e informa.
+
+Changelog 1.6.0.0:
+- O filtro de palavrões passou para um mod próprio, FS25_NoProfanityFilter. Instale esse para manter o chat, os nomes e as placas sem filtro.
+
+Changelog 1.5.1.0:
+- As letras "SALVANDO SERVIDOR" e a notificação de travamento estão nos 27 idiomas do jogo: cada jogador as lê no próprio idioma.
+- Descrição nos 27 idiomas.]]></br>
+        <nl><![CDATA[Beschrijving: zoekt uit welke mod je server laat bevriezen. Elke bevriezing van meer dan een kwart seconde wordt aan elke speler getoond en in het serverlogboek geschreven, met het modscript of het opslaan dat de oorzaak was.
+Sneltoetsen: geen, de mod werkt vanzelf. Installeer hem op de server en in het spel van elke speler.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
+
+Zodra de server langer dan een kwart seconde stilstaat, krijgt elke speler een melding op het scherm: hoe lang de server bevroor en welk modscript op dat moment het traagst was. Dezelfde regel wordt in het serverlogboek geschreven, zodat de oorzaak achteraf te vinden is.
+
+De tijd wordt per script over het hele frame opgeteld, zodat ook veel kleine aanroepen opvallen ("300 ms in 20 aanroepen"), en ook de updateables, systemen en managers van het spel zelf worden gemeten. Elke bevriezingsregel in het logboek splitst de tijd in gemeten scripts en tijd daarbuiten: is "outside" het grootste deel, dan kwam de bevriezing door de engine of ongemeten code van het basisspel, niet door een mod.
+
+Elke keer dat de server het spel opslaat, ziet elke speler grote rode letters "SERVER SLAAT OP" midden in beeld tot het opslaan klaar is.
+
+Als de server 3 seconden niet antwoordt, ziet elke speler grote rode letters "SERVER LAG WATCH" midden in beeld tot hij weer antwoordt.
+
+Verder verandert hij niets aan het spel, hij meet en meldt alleen.
+
+Changelog 1.6.0.0:
+- Het scheldwoordenfilter is verhuisd naar een eigen mod, FS25_NoProfanityFilter. Installeer die om chat, namen en kentekens ongefilterd te houden.
+
+Changelog 1.5.1.0:
+- De letters "SERVER SLAAT OP" en de bevriezingsmelding zijn er in alle 27 talen van het spel: elke speler leest ze in zijn eigen taal.
+- Beschrijving in alle 27 talen.]]></nl>
+        <pl><![CDATA[Opis: sprawdza, który mod zawiesza twój serwer. Każde zawieszenie dłuższe niż ćwierć sekundy jest pokazywane wszystkim graczom i zapisywane w logu serwera, razem ze skryptem moda albo zapisem gry, który je spowodował.
+Skróty klawiszowe: brak, działa sam. Zainstaluj go na serwerze i w grze każdego gracza.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
+
+Za każdym razem, gdy serwer stanie na dłużej niż ćwierć sekundy, każdy gracz dostaje powiadomienie na ekranie: jak długo serwer był zawieszony i który skrypt moda był w tej chwili najwolniejszy. Ta sama linia trafia do logu serwera, żeby przyczynę można było znaleźć później.
+
+Czas jest sumowany dla każdego skryptu przez całą klatkę, więc widać też wiele małych wywołań ("300 ms, wywołań: 20"), a updateables, systemy i menedżery samej gry też są mierzone. Każda linia o zawieszeniu w logu dzieli czas na mierzone skrypty i czas poza nimi: gdy "outside" to większość, zawieszenie spowodował silnik albo niemierzony kod gry podstawowej, a nie mod.
+
+Za każdym razem, gdy serwer zapisuje grę, każdy gracz widzi duże czerwone litery "ZAPIS SERWERA" na środku ekranu, aż zapis się skończy.
+
+Gdy serwer nie odpowiada przez 3 sekundy, każdy gracz widzi duże czerwone litery "SERVER LAG WATCH" na środku ekranu, aż serwer znów odpowie.
+
+Poza tym niczego w grze nie zmienia, tylko mierzy i zgłasza.
+
+Changelog 1.6.0.0:
+- Filtr wulgaryzmów przeniesiono do osobnego moda, FS25_NoProfanityFilter. Zainstaluj go, aby czat, nazwy i tablice pozostały niefiltrowane.
+
+Changelog 1.5.1.0:
+- Litery "ZAPIS SERWERA" i powiadomienie o zawieszeniu są we wszystkich 27 językach gry: każdy gracz czyta je w swoim języku.
+- Opis we wszystkich 27 językach.]]></pl>
+        <cz><![CDATA[Popis: zjistí, který mód zamrazuje tvůj server. Každé zamrznutí delší než čtvrt sekundy se ukáže všem hráčům a zapíše do logu serveru, i se skriptem módu nebo ukládáním, které ho způsobilo.
+Klávesové zkratky: žádné, funguje sám. Nainstaluj ho na server a do hry každého hráče.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
+
+Kdykoli se server zastaví na déle než čtvrt sekundy, každý hráč dostane upozornění na obrazovce: jak dlouho byl server zamrzlý a který skript módu byl v tu chvíli nejpomalejší. Stejný řádek se zapíše do logu serveru, aby se příčina dala najít i později.
+
+Čas se sčítá pro každý skript přes celý snímek, takže je vidět i mnoho malých volání ("300 ms, volání: 20"), a měří se i updateables, systémy a správci samotné hry. Každý řádek o zamrznutí v logu dělí čas na měřené skripty a čas mimo ně: když je "outside" většina, zamrznutí způsobil engine nebo neměřený kód základní hry, ne mód.
+
+Pokaždé, když server ukládá hru, vidí každý hráč uprostřed obrazovky velká červená písmena "UKLÁDÁNÍ SERVERU", dokud ukládání neskončí.
+
+Když server 3 sekundy neodpovídá, vidí každý hráč uprostřed obrazovky velká červená písmena "SERVER LAG WATCH", dokud znovu neodpoví.
+
+Jinak ve hře nic nemění, jen měří a hlásí.
+
+Changelog 1.6.0.0:
+- Filtr vulgarismů se přesunul do vlastního modu, FS25_NoProfanityFilter. Nainstaluj ho, aby chat, jména a SPZ zůstaly nefiltrované.
+
+Changelog 1.5.1.0:
+- Písmena "UKLÁDÁNÍ SERVERU" a upozornění na zamrznutí jsou ve všech 27 jazycích hry: každý hráč je čte ve svém jazyce.
+- Popis ve všech 27 jazycích.]]></cz>
+        <ru><![CDATA[Описание: находит мод, из-за которого зависает твой сервер. Каждое зависание дольше четверти секунды показывается всем игрокам и записывается в лог сервера вместе со скриптом мода или сохранением, которое его вызвало.
+Горячие клавиши: нет, мод работает сам. Установи его на сервер и в игру каждого игрока.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
+
+Когда сервер останавливается дольше чем на четверть секунды, каждый игрок получает уведомление на экране: сколько длилось зависание и какой скрипт мода был самым медленным в этот момент. Та же строка записывается в лог сервера, чтобы причину можно было найти и потом.
+
+Время суммируется по каждому скрипту за весь кадр, поэтому видны и многие мелкие вызовы ("300 ms, вызовов: 20"), а updateables, системы и менеджеры самой игры тоже измеряются. Каждая строка о зависании в логе делит время на измеренные скрипты и время вне их: если "outside" составляет большую часть, зависание вызвал движок или неизмеренный код базовой игры, а не мод.
+
+Каждый раз, когда сервер сохраняет игру, каждый игрок видит большие красные буквы "СОХРАНЕНИЕ СЕРВЕРА" посреди экрана, пока сохранение не закончится.
+
+Когда сервер не отвечает 3 секунды, каждый игрок видит большие красные буквы "SERVER LAG WATCH" посреди экрана, пока сервер снова не ответит.
+
+В остальном он ничего в игре не меняет, только измеряет и сообщает.
+
+Changelog 1.6.0.0:
+- Фильтр нецензурных слов вынесен в отдельный мод, FS25_NoProfanityFilter. Установите его, чтобы чат, имена и номерные знаки оставались без фильтра.
+
+Changelog 1.5.1.0:
+- Буквы "СОХРАНЕНИЕ СЕРВЕРА" и уведомление о зависании есть на всех 27 языках игры: каждый игрок читает их на своём языке.
+- Описание на всех 27 языках.]]></ru>
+        <uk><![CDATA[Опис: знаходить мод, через який зависає твій сервер. Кожне зависання довше за чверть секунди показується всім гравцям і записується в лог сервера разом зі скриптом мода або збереженням, що його спричинило.
+Гарячі клавіші: немає, мод працює сам. Встанови його на сервер і в гру кожного гравця.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
+
+Коли сервер зупиняється довше ніж на чверть секунди, кожен гравець отримує сповіщення на екрані: скільки тривало зависання і який скрипт мода був найповільнішим у цю мить. Той самий рядок записується в лог сервера, щоб причину можна було знайти й потім.
+
+Час підсумовується для кожного скрипта за весь кадр, тому видно й багато дрібних викликів ("300 ms, викликів: 20"), а updateables, системи й менеджери самої гри теж вимірюються. Кожен рядок про зависання в лозі ділить час на виміряні скрипти й час поза ними: якщо "outside" становить більшу частину, зависання спричинив рушій або невиміряний код базової гри, а не мод.
+
+Щоразу, коли сервер зберігає гру, кожен гравець бачить великі червоні літери "ЗБЕРЕЖЕННЯ СЕРВЕРА" посеред екрана, доки збереження не закінчиться.
+
+Коли сервер не відповідає 3 секунди, кожен гравець бачить великі червоні літери "SERVER LAG WATCH" посеред екрана, доки сервер знову не відповість.
+
+Інакше він нічого в грі не змінює, лише вимірює й повідомляє.
+
+Changelog 1.6.0.0:
+- Фільтр лайливих слів винесено в окремий мод, FS25_NoProfanityFilter. Встановіть його, щоб чат, імена й номерні знаки лишалися без фільтра.
+
+Changelog 1.5.1.0:
+- Літери "ЗБЕРЕЖЕННЯ СЕРВЕРА" і сповіщення про зависання є всіма 27 мовами гри: кожен гравець читає їх своєю мовою.
+- Опис усіма 27 мовами.]]></uk>
+        <hu><![CDATA[Leírás: kideríti, melyik mod fagyasztja le a szerveredet. Minden negyed másodpercnél hosszabb fagyást minden játékos lát, és a szervernaplóba is bekerül, a mod szkriptjével vagy a mentéssel együtt, ami okozta.
+Gyorsbillentyűk: nincsenek, magától működik. Telepítsd a szerverre és minden játékos játékába.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
+
+Amikor a szerver negyed másodpercnél tovább megáll, minden játékos értesítést kap a képernyőn: mennyi ideig fagyott le a szerver, és melyik mod szkriptje volt abban a pillanatban a leglassabb. Ugyanez a sor a szervernaplóba is bekerül, így az ok később is megtalálható.
+
+Az idő szkriptenként, az egész képkockára összeadódik, így a sok kis hívás is látszik ("300 ms, hívások: 20"), és a játék saját updateable-jei, rendszerei és kezelői is mérve vannak. A naplóban minden fagyássor felosztja az időt mért szkriptekre és az azokon kívüli időre: ha az "outside" a nagyobb rész, a fagyást a motor vagy az alapjáték nem mért kódja okozta, nem egy mod.
+
+Minden alkalommal, amikor a szerver menti a játékot, minden játékos nagy piros "SZERVER MENTÉS" betűket lát a képernyő közepén, amíg a mentés be nem fejeződik.
+
+Ha a szerver 3 másodpercig nem válaszol, minden játékos nagy piros "SERVER LAG WATCH" betűket lát a képernyő közepén, amíg újra nem válaszol.
+
+Ezen kívül semmit nem változtat a játékon, csak mér és jelez.
+
+Changelog 1.6.0.0:
+- A trágárságszűrő saját modba költözött: FS25_NoProfanityFilter. Azt telepítsd, ha a chat, a nevek és a rendszámok szűretlenek maradjanak.
+
+Changelog 1.5.1.0:
+- A "SZERVER MENTÉS" betűk és a fagyásértesítés a játék mind a 27 nyelvén megvannak: minden játékos a saját nyelvén olvassa őket.
+- Leírás mind a 27 nyelven.]]></hu>
+        <ro><![CDATA[Descriere: află ce mod îți îngheață serverul. Fiecare înghețare mai lungă de un sfert de secundă este arătată tuturor jucătorilor și scrisă în jurnalul serverului, împreună cu scriptul modului sau salvarea care a cauzat-o.
+Taste rapide: niciuna, funcționează singur. Instalează-l pe server și în jocul fiecărui jucător.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
+
+Ori de câte ori serverul se oprește mai mult de un sfert de secundă, fiecare jucător primește o notificare pe ecran: cât timp a stat serverul înghețat și ce script de mod a fost cel mai lent în acel moment. Aceeași linie este scrisă în jurnalul serverului, ca să poată fi găsită cauza și mai târziu.
+
+Timpul se adună pe fiecare script pe tot cadrul, așa că apar și multe apeluri mici ("300 ms, apeluri: 20"), iar updateable-urile, sistemele și managerii jocului sunt și ei măsurați. Fiecare linie de înghețare din jurnal împarte timpul în scripturi măsurate și timp în afara lor: când "outside" este cea mai mare parte, înghețarea a fost cauzată de motor sau de cod nemăsurat al jocului de bază, nu de un mod.
+
+De fiecare dată când serverul salvează jocul, fiecare jucător vede litere mari și roșii "SALVARE SERVER" în mijlocul ecranului până la terminarea salvării.
+
+Când serverul nu mai răspunde timp de 3 secunde, fiecare jucător vede litere mari și roșii "SERVER LAG WATCH" în mijlocul ecranului până când răspunde din nou.
+
+În rest nu schimbă nimic în joc, doar măsoară și raportează.
+
+Changelog 1.6.0.0:
+- Filtrul de limbaj vulgar s-a mutat în propriul mod, FS25_NoProfanityFilter. Instalează-l ca chatul, numele și numerele de înmatriculare să rămână nefiltrate.
+
+Changelog 1.5.1.0:
+- Literele "SALVARE SERVER" și notificarea de înghețare sunt în toate cele 27 de limbi ale jocului: fiecare jucător le citește în limba lui.
+- Descriere în toate cele 27 de limbi.]]></ro>
+        <tr><![CDATA[Açıklama: Sunucunu hangi modun dondurduğunu bulur. Çeyrek saniyeden uzun her donma tüm oyunculara gösterilir ve buna neden olan mod betiği ya da kayıt işlemiyle birlikte sunucu günlüğüne yazılır.
+Kısayol tuşları: yok, kendi kendine çalışır. Sunucuya ve her oyuncunun oyununa kur.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
+
+Sunucu çeyrek saniyeden uzun durduğunda her oyuncu ekranda bir bildirim alır: sunucunun ne kadar donduğu ve o anda hangi mod betiğinin en yavaş olduğu. Aynı satır sunucu günlüğüne de yazılır, böylece neden sonradan da bulunabilir.
+
+Süre her betik için tüm kare boyunca toplanır, bu yüzden çok sayıda küçük çağrı da görünür ("300 ms, çağrı: 20"); oyunun kendi updateable'ları, sistemleri ve yöneticileri de ölçülür. Günlükteki her donma satırı süreyi ölçülen betikler ve onların dışındaki süre olarak ayırır: "outside" büyük kısmı oluşturuyorsa donmaya bir mod değil, motor ya da ölçülmeyen ana oyun kodu neden olmuştur.
+
+Sunucu oyunu her kaydettiğinde, kayıt bitene kadar her oyuncu ekranın ortasında büyük kırmızı "SUNUCU KAYDEDİYOR" harfleri görür.
+
+Sunucu 3 saniye yanıt vermezse, yeniden yanıt verene kadar her oyuncu ekranın ortasında büyük kırmızı "SERVER LAG WATCH" harfleri görür.
+
+Bunun dışında oyunda hiçbir şeyi değiştirmez, yalnızca ölçer ve bildirir.
+
+Changelog 1.6.0.0:
+- Küfür filtresi kendi moduna taşındı: FS25_NoProfanityFilter. Sohbet, isimler ve plakalar filtresiz kalsın istiyorsan onu kur.
+
+Changelog 1.5.1.0:
+- "SUNUCU KAYDEDİYOR" harfleri ve donma bildirimi oyunun 27 dilinin hepsinde var: her oyuncu onları kendi dilinde okur.
+- Açıklama 27 dilin hepsinde.]]></tr>
+        <da><![CDATA[Beskrivelse: finder ud af, hvilken mod der får din server til at fryse. Hver frysning på over et kvart sekund vises for alle spillere og skrives i serverens log, med det mod-script eller den gemning, der var årsagen.
+Genvejstaster: ingen, den virker af sig selv. Installer den på serveren og i hver spillers spil.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
+
+Når serveren står stille i mere end et kvart sekund, får hver spiller en besked på skærmen: hvor længe serveren frøs, og hvilket mod-script der var langsomst i det øjeblik. Den samme linje skrives i serverens log, så årsagen kan findes bagefter.
+
+Tiden lægges sammen pr. script over hele billedet, så mange små kald også ses ("300 ms i 20 kald"), og spillets egne updateables, systemer og managere måles også. Hver frysningslinje i loggen deler tiden op i målte scripts og tid uden for dem: når "outside" er det meste, var det motoren eller ikke-målt kode fra grundspillet, der fik serveren til at fryse, ikke en mod.
+
+Hver gang serveren gemmer spillet, ser hver spiller store røde bogstaver "SERVER GEMMER" midt på skærmen, indtil gemningen er færdig.
+
+Når serveren ikke svarer i 3 sekunder, ser hver spiller store røde bogstaver "SERVER LAG WATCH" midt på skærmen, indtil den svarer igen.
+
+Ud over det ændrer den intet i spillet, den måler og melder kun.
+
+Changelog 1.6.0.0:
+- Bandeordsfilteret er flyttet til sin egen mod, FS25_NoProfanityFilter. Installer den for at holde chat, navne og nummerplader ufiltrerede.
+
+Changelog 1.5.1.0:
+- Bogstaverne "SERVER GEMMER" og frysningsbeskeden findes på alle spillets 27 sprog: hver spiller læser dem på sit eget sprog.
+- Beskrivelse på alle 27 sprog.]]></da>
+        <sv><![CDATA[Beskrivning: tar reda på vilken mod som får din server att frysa. Varje frysning på över en kvarts sekund visas för alla spelare och skrivs i serverns logg, med det mod-skript eller den sparning som orsakade den.
+Snabbtangenter: inga, den sköter sig själv. Installera den på servern och i varje spelares spel.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
+
+När servern står still i mer än en kvarts sekund får varje spelare ett meddelande på skärmen: hur länge servern frös och vilket mod-skript som var långsammast just då. Samma rad skrivs i serverns logg, så att orsaken kan hittas i efterhand.
+
+Tiden summeras per skript över hela bildrutan, så att även många små anrop syns ("300 ms i 20 anrop"), och spelets egna updateables, system och hanterare mäts också. Varje frysningsrad i loggen delar upp tiden i mätta skript och tid utanför dem: när "outside" är det mesta var det motorn eller omätt kod i grundspelet som orsakade frysningen, inte en mod.
+
+Varje gång servern sparar spelet ser varje spelare stora röda bokstäver "SERVERN SPARAR" mitt på skärmen tills sparningen är klar.
+
+När servern inte svarar på 3 sekunder ser varje spelare stora röda bokstäver "SERVER LAG WATCH" mitt på skärmen tills den svarar igen.
+
+Utöver det ändrar den ingenting i spelet, den bara mäter och rapporterar.
+
+Changelog 1.6.0.0:
+- Svordomsfiltret har flyttat till en egen mod, FS25_NoProfanityFilter. Installera den för att hålla chatt, namn och registreringsskyltar ofiltrerade.
+
+Changelog 1.5.1.0:
+- Bokstäverna "SERVERN SPARAR" och frysningsmeddelandet finns på spelets alla 27 språk: varje spelare läser dem på sitt eget språk.
+- Beskrivning på alla 27 språk.]]></sv>
+        <no><![CDATA[Beskrivelse: finner ut hvilken mod som får serveren din til å fryse. Hver frysing på over et kvart sekund vises for alle spillere og skrives i serverloggen, med mod-skriptet eller lagringen som var årsaken.
+Hurtigtaster: ingen, den virker av seg selv. Installer den på serveren og i spillet til hver spiller.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
+
+Når serveren står stille i mer enn et kvart sekund, får hver spiller en melding på skjermen: hvor lenge serveren frøs, og hvilket mod-skript som var tregest i det øyeblikket. Den samme linjen skrives i serverloggen, så årsaken kan finnes etterpå.
+
+Tiden legges sammen per skript over hele bildet, så mange små kall også vises ("300 ms i 20 kall"), og spillets egne updateables, systemer og managere måles også. Hver frysingslinje i loggen deler tiden i målte skript og tid utenfor dem: når "outside" er det meste, var det motoren eller ikke-målt kode i grunnspillet som forårsaket frysingen, ikke en mod.
+
+Hver gang serveren lagrer spillet, ser hver spiller store røde bokstaver "SERVER LAGRER" midt på skjermen til lagringen er ferdig.
+
+Når serveren ikke svarer på 3 sekunder, ser hver spiller store røde bokstaver "SERVER LAG WATCH" midt på skjermen til den svarer igjen.
+
+Utover det endrer den ingenting i spillet, den bare måler og melder.
+
+Changelog 1.6.0.0:
+- Banneordfilteret er flyttet til sin egen mod, FS25_NoProfanityFilter. Installer den for å holde chat, navn og skilt ufiltrert.
+
+Changelog 1.5.1.0:
+- Bokstavene "SERVER LAGRER" og frysingsmeldingen finnes på alle spillets 27 språk: hver spiller leser dem på sitt eget språk.
+- Beskrivelse på alle 27 språk.]]></no>
+        <fi><![CDATA[Kuvaus: selvittää, mikä modi jumittaa palvelimesi. Jokainen yli neljänneksen sekunnin jumi näytetään kaikille pelaajille ja kirjoitetaan palvelimen lokiin yhdessä sen aiheuttaneen modin skriptin tai tallennuksen kanssa.
+Pikanäppäimet: ei ole, toimii itsestään. Asenna se palvelimelle ja jokaisen pelaajan peliin.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
+
+Aina kun palvelin pysähtyy yli neljännessekunniksi, jokainen pelaaja saa ilmoituksen ruudulle: kuinka kauan palvelin oli jumissa ja mikä modin skripti oli sillä hetkellä hitain. Sama rivi kirjoitetaan palvelimen lokiin, jotta syy löytyy myöhemminkin.
+
+Aika lasketaan yhteen skriptikohtaisesti koko ruudun ajalta, joten myös monet pienet kutsut näkyvät ("300 ms, kutsuja: 20"), ja myös pelin omat updateablet, järjestelmät ja hallinnoijat mitataan. Jokainen lokin jumirivi jakaa ajan mitattuihin skripteihin ja niiden ulkopuoliseen aikaan: kun "outside" on suurin osa, jumin aiheutti pelimoottori tai peruspelin mittaamaton koodi, ei modi.
+
+Aina kun palvelin tallentaa pelin, jokainen pelaaja näkee isot punaiset kirjaimet "PALVELIN TALLENTAA" keskellä ruutua, kunnes tallennus on valmis.
+
+Kun palvelin ei vastaa 3 sekuntiin, jokainen pelaaja näkee isot punaiset kirjaimet "SERVER LAG WATCH" keskellä ruutua, kunnes se vastaa taas.
+
+Muuten se ei muuta pelissä mitään, se vain mittaa ja ilmoittaa.
+
+Changelog 1.6.0.0:
+- Kirosanasuodatin siirtyi omaan modiinsa, FS25_NoProfanityFilter. Asenna se, jos haluat chatin, nimien ja rekisterikilpien pysyvän suodattamattomina.
+
+Changelog 1.5.1.0:
+- Kirjaimet "PALVELIN TALLENTAA" ja jumi-ilmoitus ovat kaikilla pelin 27 kielellä: jokainen pelaaja lukee ne omalla kielellään.
+- Kuvaus kaikilla 27 kielellä.]]></fi>
+        <jp><![CDATA[説明：どのMODがサーバーを止めているかを突き止めます。0.25秒を超える停止はすべて全プレイヤーに表示され、原因になったMODのスクリプトや保存と一緒にサーバーログに書き込まれます。
+ホットキー：なし、自動で動作します。サーバーと全プレイヤーのゲームにインストールしてください。
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
+
+サーバーが0.25秒より長く止まるたびに、全プレイヤーの画面に通知が出ます。サーバーがどれだけ止まったか、その時どのMODのスクリプトが最も遅かったかが表示されます。同じ行がサーバーログにも書き込まれるので、後から原因を調べられます。
+
+時間はフレーム全体を通してスクリプトごとに合計されるため、小さな呼び出しが多数あっても表示されます（「300 ms（20回の呼び出し）」）。ゲーム本体のupdateable、システム、マネージャーも計測されます。ログの停止行は、計測したスクリプトの時間とそれ以外の時間に分けて表示します。「outside」が大部分なら、停止の原因はMODではなく、エンジンか計測していないベースゲームのコードです。
+
+サーバーがゲームを保存するたびに、保存が終わるまで全プレイヤーの画面中央に大きな赤い文字「サーバー保存中」が表示されます。
+
+サーバーが3秒間応答しないと、再び応答するまで全プレイヤーの画面中央に大きな赤い文字「SERVER LAG WATCH」が表示されます。
+
+それ以外はゲームを何も変えず、計測して知らせるだけです。
+
+Changelog 1.6.0.0:
+- 不適切な言葉のフィルターは専用のMOD「FS25_NoProfanityFilter」に移りました。チャット、名前、ナンバープレートをフィルターなしのままにするには、そちらを導入してください。
+
+Changelog 1.5.1.0:
+- 「サーバー保存中」の文字と停止の通知がゲームの全27言語に対応しました。各プレイヤーは自分の言語で読めます。
+- 説明文を全27言語で用意しました。]]></jp>
+        <kr><![CDATA[설명: 어떤 모드가 서버를 멈추게 하는지 찾아냅니다. 0.25초가 넘는 모든 멈춤은 모든 플레이어에게 표시되고, 원인이 된 모드 스크립트나 저장과 함께 서버 로그에 기록됩니다.
+단축키: 없음, 알아서 작동합니다. 서버와 모든 플레이어의 게임에 설치하세요.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
+
+서버가 0.25초보다 오래 멈출 때마다 모든 플레이어의 화면에 알림이 뜹니다. 서버가 얼마나 멈췄는지, 그 순간 어떤 모드 스크립트가 가장 느렸는지 보여 줍니다. 같은 줄이 서버 로그에도 기록되어 나중에도 원인을 찾을 수 있습니다.
+
+시간은 프레임 전체에 걸쳐 스크립트별로 합산되므로 작은 호출이 많아도 드러나며("300 ms (20회 호출)"), 게임 자체의 updateable, 시스템, 매니저도 측정됩니다. 로그의 각 멈춤 줄은 시간을 측정된 스크립트와 그 밖의 시간으로 나눕니다. "outside"가 대부분이면 멈춤의 원인은 모드가 아니라 엔진이나 측정되지 않은 기본 게임 코드입니다.
+
+서버가 게임을 저장할 때마다 저장이 끝날 때까지 모든 플레이어의 화면 가운데에 크고 빨간 글자 "서버 저장 중"이 표시됩니다.
+
+서버가 3초 동안 응답하지 않으면 다시 응답할 때까지 모든 플레이어의 화면 가운데에 크고 빨간 글자 "SERVER LAG WATCH"가 표시됩니다.
+
+채팅, 이름, 번호판에 입력한 그대로 표시됩니다. 그 밖에는 게임에서 아무것도 바꾸지 않고 측정하고 알리기만 합니다.
+
+Changelog 1.6.0.0:
+- 욕설 필터는 별도의 모드 FS25_NoProfanityFilter로 옮겨졌습니다. 채팅, 이름, 번호판을 필터 없이 유지하려면 그 모드를 설치하세요.
+
+Changelog 1.5.1.0:
+- "서버 저장 중" 글자와 멈춤 알림이 게임의 27개 언어 모두로 제공됩니다. 모든 플레이어가 자신의 언어로 읽습니다.
+- 설명을 27개 언어 모두로 제공합니다.]]></kr>
+        <cs><![CDATA[说明：找出是哪个模组让你的服务器卡住。每次超过四分之一秒的卡顿都会显示给所有玩家，并连同造成卡顿的模组脚本或存档一起写入服务器日志。
+快捷键：无，自动运行。请安装在服务器和每位玩家的游戏中。
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
+
+每当服务器停顿超过四分之一秒，每位玩家都会在屏幕上收到通知：服务器卡了多久，以及当时哪个模组脚本最慢。同样的一行也会写入服务器日志，方便事后查找原因。
+
+时间按脚本在整个帧内累加，所以许多小调用也会显示出来（"300 ms（20 次调用）"），游戏本身的 updateable、系统和管理器也会被计时。日志中的每条卡顿记录会把时间分成已计时的脚本和其外的时间：如果 "outside" 占了大部分，卡顿是引擎或未计时的基础游戏代码造成的，而不是模组。
+
+每次服务器保存游戏时，每位玩家都会在屏幕中央看到红色大字"服务器保存中"，直到保存完成。
+
+当服务器 3 秒没有响应时，每位玩家都会在屏幕中央看到红色大字"SERVER LAG WATCH"，直到服务器恢复响应。
+
+除此之外它不改变游戏中的任何东西，只负责测量和报告。
+
+Changelog 1.6.0.0:
+- 脏话过滤功能已移到独立模组 FS25_NoProfanityFilter。如需让聊天、名字和车牌保持不过滤，请安装该模组。
+
+Changelog 1.5.1.0:
+- "服务器保存中"大字和卡顿通知支持游戏全部 27 种语言：每位玩家都用自己的语言阅读。
+- 说明提供全部 27 种语言。]]></cs>
+        <ct><![CDATA[說明：找出是哪個模組讓你的伺服器卡住。每次超過四分之一秒的卡頓都會顯示給所有玩家，並連同造成卡頓的模組腳本或存檔一起寫入伺服器日誌。
+快捷鍵：無，自動運作。請安裝在伺服器和每位玩家的遊戲中。
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
+
+每當伺服器停頓超過四分之一秒，每位玩家都會在螢幕上收到通知：伺服器卡了多久，以及當時哪個模組腳本最慢。同樣的一行也會寫入伺服器日誌，方便事後查找原因。
+
+時間按腳本在整個影格內累加，所以許多小呼叫也會顯示出來（"300 ms（20 次呼叫）"），遊戲本身的 updateable、系統和管理器也會被計時。日誌中的每條卡頓記錄會把時間分成已計時的腳本和其外的時間：如果 "outside" 佔了大部分，卡頓是引擎或未計時的基礎遊戲程式碼造成的，而不是模組。
+
+每次伺服器儲存遊戲時，每位玩家都會在螢幕中央看到紅色大字"伺服器儲存中"，直到儲存完成。
+
+當伺服器 3 秒沒有回應時，每位玩家都會在螢幕中央看到紅色大字"SERVER LAG WATCH"，直到伺服器恢復回應。
+
+除此之外它不改變遊戲中的任何東西，只負責測量和回報。
+
+Changelog 1.6.0.0:
+- 髒話過濾功能已移到獨立模組 FS25_NoProfanityFilter。如需讓聊天、名字和車牌保持不過濾，請安裝該模組。
+
+Changelog 1.5.1.0:
+- "伺服器儲存中"大字和卡頓通知支援遊戲全部 27 種語言：每位玩家都用自己的語言閱讀。
+- 說明提供全部 27 種語言。]]></ct>
+        <id><![CDATA[Deskripsi: mencari tahu mod mana yang membuat server kamu membeku. Setiap pembekuan lebih dari seperempat detik ditampilkan ke semua pemain dan ditulis ke log server, beserta skrip mod atau penyimpanan yang menyebabkannya.
+Tombol pintas: tidak ada, bekerja sendiri. Pasang di server dan di game setiap pemain.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
+
+Setiap kali server berhenti lebih dari seperempat detik, setiap pemain mendapat notifikasi di layar: berapa lama server membeku dan skrip mod mana yang paling lambat saat itu. Baris yang sama ditulis ke log server, agar penyebabnya bisa ditemukan nanti.
+
+Waktu dijumlahkan per skrip selama satu frame penuh, jadi banyak panggilan kecil juga terlihat ("300 ms dalam 20 panggilan"), dan updateable, sistem, serta manajer milik game sendiri juga diukur. Setiap baris pembekuan di log membagi waktu menjadi skrip yang diukur dan waktu di luarnya: jika "outside" adalah bagian terbesar, pembekuan disebabkan oleh mesin game atau kode game dasar yang tidak diukur, bukan oleh mod.
+
+Setiap kali server menyimpan game, setiap pemain melihat huruf merah besar "SERVER MENYIMPAN" di tengah layar sampai penyimpanan selesai.
+
+Jika server tidak menjawab selama 3 detik, setiap pemain melihat huruf merah besar "SERVER LAG WATCH" di tengah layar sampai server menjawab lagi.
+
+Selain itu, mod ini tidak mengubah apa pun di game, hanya mengukur dan melaporkan.
+
+Changelog 1.6.0.0:
+- Filter kata kasar pindah ke mod tersendiri, FS25_NoProfanityFilter. Pasang mod itu agar obrolan, nama, dan pelat nomor tetap tanpa filter.
+
+Changelog 1.5.1.0:
+- Huruf "SERVER MENYIMPAN" dan notifikasi pembekuan tersedia dalam ke-27 bahasa game: setiap pemain membacanya dalam bahasanya sendiri.
+- Deskripsi dalam ke-27 bahasa.]]></id>
+        <vi><![CDATA[Mô tả: tìm ra mod nào làm máy chủ của bạn bị đứng. Mỗi lần đứng lâu hơn một phần tư giây đều được hiển thị cho mọi người chơi và ghi vào nhật ký máy chủ, kèm theo script của mod hoặc lần lưu đã gây ra nó.
+Phím tắt: không có, mod tự hoạt động. Cài nó trên máy chủ và trong game của mọi người chơi.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
+
+Mỗi khi máy chủ dừng lâu hơn một phần tư giây, mọi người chơi nhận được một thông báo trên màn hình: máy chủ bị đứng bao lâu và script mod nào chậm nhất vào lúc đó. Cùng dòng đó được ghi vào nhật ký máy chủ, để có thể tìm ra nguyên nhân về sau.
+
+Thời gian được cộng dồn theo từng script trong cả khung hình, nên nhiều lần gọi nhỏ cũng hiện ra ("300 ms trong 20 lần gọi"), và các updateable, hệ thống và trình quản lý của chính game cũng được đo. Mỗi dòng báo đứng trong nhật ký chia thời gian thành các script được đo và thời gian bên ngoài chúng: khi "outside" chiếm phần lớn, nguyên nhân là engine hoặc mã game gốc không được đo, không phải mod.
+
+Mỗi lần máy chủ lưu game, mọi người chơi thấy chữ đỏ lớn "MÁY CHỦ ĐANG LƯU" giữa màn hình cho đến khi lưu xong.
+
+Khi máy chủ không phản hồi trong 3 giây, mọi người chơi thấy chữ đỏ lớn "SERVER LAG WATCH" giữa màn hình cho đến khi nó phản hồi lại.
+
+Ngoài ra mod không thay đổi gì trong game, chỉ đo và báo cáo.
+
+Changelog 1.6.0.0:
+- Bộ lọc từ ngữ thô tục đã chuyển sang mod riêng, FS25_NoProfanityFilter. Hãy cài mod đó để trò chuyện, tên và biển số không bị lọc.
+
+Changelog 1.5.1.0:
+- Chữ "MÁY CHỦ ĐANG LƯU" và thông báo đứng máy có ở cả 27 ngôn ngữ của game: mọi người chơi đọc chúng bằng ngôn ngữ của mình.
+- Mô tả bằng cả 27 ngôn ngữ.]]></vi>
     </description>
 
     <iconFilename>icon_serverLagWatch.dds</iconFilename>
 
     <multiplayer supported="true"/>
+
+    <l10n filenamePrefix="translations/translation"/>
 
     <extraSourceFiles>
         <sourceFile filename="scripts/ServerLagWatch.lua"/>

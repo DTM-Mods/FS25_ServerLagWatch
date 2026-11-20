@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+    <elements>
+        <e k="slw_serverSave" v="SALVARE SERVER"/>
+        <e k="slw_serverFroze" v="Serverul a înghețat %s s - %s"/>
+        <e k="slw_unknown" v="necunoscut"/>
+        <e k="slw_farm" v="Ferma %s"/>
+        <e k="slw_aiHelper" v="ajutor IA"/>
+        <e k="slw_noDriver" v="fără șofer"/>
+        <e k="slw_field" v="Câmpul %s"/>
+        <e k="slw_farmland" v="teren %s"/>
+        <e k="slw_offField" v="în afara câmpului"/>
+        <e k="slw_baseGame" v="jocul de bază"/>
+        <e k="slw_mod" v="mod %s"/>
+        <e k="slw_vehiclePlaceable" v="vehicul/obiect plasabil"/>
+        <e k="slw_slowestOne" v="cel mai lent"/>
+        <e k="slw_gameSave" v="salvarea jocului"/>
+        <e k="slw_msInCalls" v="%s ms, apeluri: %s"/>
+        <e k="slw_msInOneCall" v="%s ms, 1 apel"/>
+    </elements>
+</l10n>

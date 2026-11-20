@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+    <elements>
+        <e k="slw_serverSave" v="UKLÁDÁNÍ SERVERU"/>
+        <e k="slw_serverFroze" v="Server zamrzl na %s s - %s"/>
+        <e k="slw_unknown" v="neznámý"/>
+        <e k="slw_farm" v="Farma %s"/>
+        <e k="slw_aiHelper" v="pomocník AI"/>
+        <e k="slw_noDriver" v="bez řidiče"/>
+        <e k="slw_field" v="Pole %s"/>
+        <e k="slw_farmland" v="pozemek %s"/>
+        <e k="slw_offField" v="mimo pole"/>
+        <e k="slw_baseGame" v="základní hra"/>
+        <e k="slw_mod" v="mód %s"/>
+        <e k="slw_vehiclePlaceable" v="vozidlo/objekt"/>
+        <e k="slw_slowestOne" v="nejpomalejší"/>
+        <e k="slw_gameSave" v="uložení hry"/>
+        <e k="slw_msInCalls" v="%s ms, volání: %s"/>
+        <e k="slw_msInOneCall" v="%s ms, 1 volání"/>
+    </elements>
+</l10n>

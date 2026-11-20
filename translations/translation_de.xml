@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+    <elements>
+        <e k="slw_serverSave" v="SERVER SPEICHERT"/>
+        <e k="slw_serverFroze" v="Server hing %s s - %s"/>
+        <e k="slw_unknown" v="unbekannt"/>
+        <e k="slw_farm" v="Hof %s"/>
+        <e k="slw_aiHelper" v="KI-Helfer"/>
+        <e k="slw_noDriver" v="kein Fahrer"/>
+        <e k="slw_field" v="Feld %s"/>
+        <e k="slw_farmland" v="Grundstück %s"/>
+        <e k="slw_offField" v="außerhalb der Felder"/>
+        <e k="slw_baseGame" v="Basisspiel"/>
+        <e k="slw_mod" v="Mod %s"/>
+        <e k="slw_vehiclePlaceable" v="Fahrzeug/Objekt"/>
+        <e k="slw_slowestOne" v="der langsamste"/>
+        <e k="slw_gameSave" v="Speichern"/>
+        <e k="slw_msInCalls" v="%s ms in %s Aufrufen"/>
+        <e k="slw_msInOneCall" v="%s ms in 1 Aufruf"/>
+    </elements>
+</l10n>

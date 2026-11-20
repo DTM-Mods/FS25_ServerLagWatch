@@ -26,7 +26,6 @@ ServerLagWatch.BIG_ALLOC_KB = 100000    -- single script calls adding more than 
 ServerLagWatch.NOTIFY_COOLDOWN_MS = 10000
 ServerLagWatch.MEMORY_LOG_MS = 60000
 
-ServerLagWatch.SAVE_TEXT = "SERVER SAVE"
 ServerLagWatch.SAVE_TEXT_SIZE = 0.1         -- share of the screen height; capitals ~1 inch tall on a 27" 1440p screen
 ServerLagWatch.SAVE_QUIET_MS = 2000         -- a save is done once no save step ran for this long
 ServerLagWatch.SAVE_MAX_MS = 300000         -- the server ends the message after this, whatever happens
@@ -37,7 +36,7 @@ ServerLagWatch.SAVE_SCREEN_TIMEOUT_MS = 600000 -- players drop the message if th
 ServerLagWatch.SAVE_STEP_CLASSES = {"ItemSystem", "VehicleSystem", "PlaceableSystem", "HandToolSystem", "AISystem"}
 ServerLagWatch.SAVE_FILE_LOG_MS = 5         -- file writes during a save slower than this are logged by name
 
-ServerLagWatch.LAG_TEXT = "SERVER LAG WATCH"
+ServerLagWatch.LAG_TEXT = "SERVER LAG WATCH"     -- the mod's name, the same in every language
 ServerLagWatch.HEARTBEAT_MS = 1000          -- server sends a heartbeat this often
 ServerLagWatch.HEARTBEAT_TIMEOUT_MS = 3000  -- players show the lag message after this long without one
 
@@ -61,6 +60,72 @@ ServerLagWatch.lastHeartbeatSent = 0    -- server
 ServerLagWatch.lastHeartbeat = nil      -- player: real time the last heartbeat arrived (nil = none yet)
 ServerLagWatch.lagShownAt = nil         -- player: real time the lag message went up (nil = not shown)
 
+---------------------------------------------------------------------------------------------
+-- Texts
+--
+-- What players see is in translations/translation_XX.xml (all 27 game languages). A freeze line is
+-- built on the server, but each player reads it in their own language: the server writes the
+-- translatable parts as tokens ({slw_field|14}) and localize() turns them into text on the machine
+-- that shows or logs the line. Script and class names stay as they are.
+---------------------------------------------------------------------------------------------
+
+-- key -> English text, used when a translation is missing (the same texts as translation_en.xml)
+ServerLagWatch.TEXTS = {
+    slw_serverSave = "SERVER SAVE",
+    slw_serverFroze = "Server froze %s s - %s",
+    slw_unknown = "unknown",
+    slw_farm = "Farm %s",
+    slw_aiHelper = "AI helper",
+    slw_noDriver = "no driver",
+    slw_field = "Field %s",
+    slw_farmland = "farmland %s",
+    slw_offField = "off-field",
+    slw_baseGame = "base game",
+    slw_mod = "mod %s",
+    slw_vehiclePlaceable = "vehicle/placeable",
+    slw_slowestOne = "slowest one",
+    slw_gameSave = "game save",
+    slw_msInCalls = "%s ms in %s calls",
+    slw_msInOneCall = "%s ms in 1 call",
+}
+
+--- The text for key in this game's language.
+function ServerLagWatch.text(key)
+    if g_i18n ~= nil and g_i18n:hasText(key, ServerLagWatch.modName) then
+        return g_i18n:getText(key, ServerLagWatch.modName)
+    end
+    return ServerLagWatch.TEXTS[key] or key
+end
+
+--- A token for a translatable part of a line: tok("slw_field", 14) -> "{slw_field|14}".
+local function tok(key, ...)
+    local token = "{" .. key
+    for i = 1, select("#", ...) do
+        token = token .. "|" .. tostring((select(i, ...)))
+    end
+    return token .. "}"
+end
+
+--- Turns the tokens in a line into text in this game's language.
+function ServerLagWatch.localize(line)
+    return (tostring(line):gsub("{(slw_%a+)([^{}]*)}", function(key, rest)
+        if ServerLagWatch.TEXTS[key] == nil then
+            return nil -- not one of ours, keep it as it is
+        end
+        local args = {}
+        for arg in rest:gmatch("|([^|]*)") do
+            table.insert(args, arg)
+        end
+        local text = ServerLagWatch.text(key)
+        if #args > 0 then
+            text = string.format(text, unpack(args))
+        end
+        return text
+    end))
+end
+
+ServerLagWatch.SAVE_LABEL = tok("slw_gameSave") .. " (saveSavegame)"   -- names the save in a freeze line
+
 local function luaMemoryKb()
     if type(gc) == "function" then
         local kb = gc("count")
@@ -74,7 +139,7 @@ end
 --- Remembers a slow or memory-hungry script call.
 function ServerLagWatch.record(name, ms, kb)
     if kb ~= nil and kb >= ServerLagWatch.BIG_ALLOC_KB then
-        Logging.info("[ServerLagWatch] %s added %d MB of Lua memory in one call (%d ms)", name, math.floor(kb / 1024), math.floor(ms))
+        Logging.info("[ServerLagWatch] %s added %d MB of Lua memory in one call (%d ms)", ServerLagWatch.localize(name), math.floor(kb / 1024), math.floor(ms))
     end
 
     if ms >= ServerLagWatch.SLOW_CALL_MS then
@@ -190,7 +255,7 @@ local function describeOwner(object)
         if farm ~= nil and farm.name ~= nil and farm.name ~= "" then
             table.insert(parts, farm.name)
         elseif farmId ~= nil then
-            table.insert(parts, "Farm " .. tostring(farmId))
+            table.insert(parts, tok("slw_farm", farmId))
         end
     end
 
@@ -201,16 +266,16 @@ local function describeOwner(object)
     end
     local who = nil
     if type(root.getIsAIActive) == "function" and root:getIsAIActive() then
-        who = "AI helper"
+        who = tok("slw_aiHelper")
     end
     if type(root.getIsControlled) == "function" and root:getIsControlled() and type(root.getControllerName) == "function" then
         local name = root:getControllerName()
         if name ~= nil and name ~= "" then
-            who = who ~= nil and (name .. " + AI helper") or name
+            who = who ~= nil and (name .. " + " .. tok("slw_aiHelper")) or name
         end
     end
     if who == nil and root.getIsControlled ~= nil then
-        who = "no driver"
+        who = tok("slw_noDriver")
     end
     if who ~= nil then
         if #parts > 0 then
@@ -225,11 +290,11 @@ local function describeOwner(object)
         local x, _, z = getWorldTranslation(node)
         local farmland = g_farmlandManager:getFarmlandAtWorldPosition(x, z)
         if farmland ~= nil and farmland.field ~= nil then
-            table.insert(parts, "Field " .. tostring(farmland.field.name or farmland.id))
+            table.insert(parts, tok("slw_field", farmland.field.name or farmland.id))
         elseif farmland ~= nil then
-            table.insert(parts, "farmland " .. tostring(farmland.id))
+            table.insert(parts, tok("slw_farmland", farmland.id))
         else
-            table.insert(parts, "off-field")
+            table.insert(parts, tok("slw_offField"))
         end
     end
 
@@ -307,7 +372,7 @@ function ServerLagWatch.installModListenerHooks()
                     local update = rawget(value, "update")
                     if type(update) == "function" and (rawget(value, "loadMap") ~= nil or rawget(value, "deleteMap") ~= nil) then
                         wrapped[value] = true
-                        local entry = newEntry("mod " .. modName .. ": " .. tostring(key) .. ":update")
+                        local entry = newEntry(tok("slw_mod", modName) .. ": " .. tostring(key) .. ":update")
                         value.update = function(...)
                             timed(entry, update, ...)
                         end
@@ -388,10 +453,10 @@ local function sourceOf(func)
     end
     local mod = info.source:match("[/\\]mods[/\\]([^/\\]+)")
     if mod ~= nil then
-        return "mod " .. (mod:gsub("%.zip$", ""))
+        return tok("slw_mod", (mod:gsub("%.zip$", "")))
     end
     if info.source:find("dataS", 1, true) ~= nil then
-        return "base game"
+        return tok("slw_baseGame")
     end
     return nil
 end
@@ -415,7 +480,7 @@ function ServerLagWatch.wrapUpdate(object, fallbackName)
     ServerLagWatch.wrappedObjects[object] = true
 
     local name = className(object) or fallbackName or "?"
-    local source = sourceOf(current) or "base game?"
+    local source = sourceOf(current) or (tok("slw_baseGame") .. "?")
     local entry = newEntry(source .. ": " .. name .. ":update")
 
     object.update = function(...)
@@ -549,8 +614,8 @@ function ServerLagWatch.runSave(originalSave, mission, ...)
             math.floor(math.max(ms - state.stepMs - state.fileMs, 0)),
             (m0 ~= nil and m1 ~= nil) and string.format(", Lua memory %+d MB", math.floor((m1 - m0) / 1024)) or "")
     end
-    ServerLagWatch.record("game save (saveSavegame)", ms, nil) -- so a freeze report names the save
-    ServerLagWatch.addNamed("game save (saveSavegame)", ms)
+    ServerLagWatch.record(ServerLagWatch.SAVE_LABEL, ms, nil) -- so a freeze report names the save
+    ServerLagWatch.addNamed(ServerLagWatch.SAVE_LABEL, ms)
     if ms >= ServerLagWatch.SAVE_BLOCKING_MS and not ServerLagWatch.saveBlocks then
         ServerLagWatch.saveBlocks = true
         Logging.info("[ServerLagWatch] Saving froze the server in one go: next saves start %d ms after the message", ServerLagWatch.SAVE_DELAY_MS)
@@ -801,7 +866,7 @@ end
 function ServerLagWatch:draw()
     -- a save freezes the server too, so the save message wins
     if self.saveShownAt ~= nil then
-        drawBigText(self.SAVE_TEXT, self.SAVE_TEXT_SIZE)
+        drawBigText(self.text("slw_serverSave"), self.SAVE_TEXT_SIZE)
     elseif self.lagShownAt ~= nil then
         drawBigText(self.LAG_TEXT, self.SAVE_TEXT_SIZE)
     end
@@ -854,9 +919,10 @@ function ServerLagWatch:update(dt)
     if dt >= self.FREEZE_MS then
         local top = self.frameCulprit()
         local worst = self.worst
-        local culprit = "unknown"
+        local culprit = tok("slw_unknown")
         if top ~= nil and (worst == nil or top.ms >= worst.ms) then
-            culprit = string.format("%s, %d ms in %d call%s", top.name, math.floor(top.ms), top.n, top.n == 1 and "" or "s")
+            culprit = top.name .. ", " .. (top.n == 1 and tok("slw_msInOneCall", math.floor(top.ms))
+                or tok("slw_msInCalls", math.floor(top.ms), top.n))
         elseif worst ~= nil then
             -- a single slow call bigger than any total of this frame
             culprit = string.format("%s, %d ms", worst.name, math.floor(worst.ms))
@@ -867,7 +933,7 @@ function ServerLagWatch:update(dt)
         local watched = math.min(self.frameWatchedMs, dt)
 
         Logging.info("[ServerLagWatch] SERVER FROZE for %d ms. Slowest script: %s. Watched scripts: %d ms, outside: %d ms",
-            math.floor(dt), culprit, math.floor(watched), math.floor(dt - watched))
+            math.floor(dt), self.localize(culprit), math.floor(watched), math.floor(dt - watched))
 
         local now = g_time or 0
         if now - self.lastNotify >= self.NOTIFY_COOLDOWN_MS then
@@ -923,9 +989,9 @@ function ServerLagWatch.frameCulprit()
     end
     local name = best.label
     if name == nil and best.kind == "spec" then
-        name = "vehicle/placeable " .. ServerLagWatch.describeSpecCall(best.className, best.eventName, best.object)
+        name = tok("slw_vehiclePlaceable") .. " " .. ServerLagWatch.describeSpecCall(best.className, best.eventName, best.object)
         if best.n > 1 then
-            name = name .. " (slowest one)"
+            name = name .. " (" .. tok("slw_slowestOne") .. ")"
         end
     end
     return {name = name or "?", ms = best.ms, n = best.n}
@@ -933,7 +999,11 @@ end
 
 --- Shown on every player's screen.
 function ServerLagWatch.showWarning(ms, culprit)
-    local text = string.format("Server froze %.1f s - %s", ms / 1000, culprit)
+    local seconds = string.format("%.1f", ms / 1000)
+    if g_i18n ~= nil and type(g_i18n.formatNumber) == "function" then
+        seconds = g_i18n:formatNumber(ms / 1000, 1) -- "1.2" or "1,2", as the player's language writes it
+    end
+    local text = string.format(ServerLagWatch.text("slw_serverFroze"), seconds, ServerLagWatch.localize(culprit))
     Logging.info("[ServerLagWatch] %s", text)
     if g_currentMission ~= nil and g_currentMission.addIngameNotification ~= nil then
         g_currentMission:addIngameNotification(FSBaseMission.INGAME_NOTIFICATION_CRITICAL, text)

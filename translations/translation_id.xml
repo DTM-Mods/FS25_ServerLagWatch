@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+    <elements>
+        <e k="slw_serverSave" v="SERVER MENYIMPAN"/>
+        <e k="slw_serverFroze" v="Server membeku %s dtk - %s"/>
+        <e k="slw_unknown" v="tidak diketahui"/>
+        <e k="slw_farm" v="Pertanian %s"/>
+        <e k="slw_aiHelper" v="pembantu AI"/>
+        <e k="slw_noDriver" v="tanpa pengemudi"/>
+        <e k="slw_field" v="Ladang %s"/>
+        <e k="slw_farmland" v="lahan %s"/>
+        <e k="slw_offField" v="di luar ladang"/>
+        <e k="slw_baseGame" v="game dasar"/>
+        <e k="slw_mod" v="mod %s"/>
+        <e k="slw_vehiclePlaceable" v="kendaraan/bangunan"/>
+        <e k="slw_slowestOne" v="yang paling lambat"/>
+        <e k="slw_gameSave" v="penyimpanan game"/>
+        <e k="slw_msInCalls" v="%s ms dalam %s panggilan"/>
+        <e k="slw_msInOneCall" v="%s ms dalam 1 panggilan"/>
+    </elements>
+</l10n>

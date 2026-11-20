@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+    <elements>
+        <e k="slw_serverSave" v="サーバー保存中"/>
+        <e k="slw_serverFroze" v="サーバーが%s秒停止 - %s"/>
+        <e k="slw_unknown" v="不明"/>
+        <e k="slw_farm" v="農場 %s"/>
+        <e k="slw_aiHelper" v="AIヘルパー"/>
+        <e k="slw_noDriver" v="運転者なし"/>
+        <e k="slw_field" v="圃場 %s"/>
+        <e k="slw_farmland" v="農地 %s"/>
+        <e k="slw_offField" v="圃場外"/>
+        <e k="slw_baseGame" v="ベースゲーム"/>
+        <e k="slw_mod" v="MOD %s"/>
+        <e k="slw_vehiclePlaceable" v="車両/設置物"/>
+        <e k="slw_slowestOne" v="最も遅いもの"/>
+        <e k="slw_gameSave" v="ゲームの保存"/>
+        <e k="slw_msInCalls" v="%s ms（%s回の呼び出し）"/>
+        <e k="slw_msInOneCall" v="%s ms（1回の呼び出し）"/>
+    </elements>
+</l10n>
