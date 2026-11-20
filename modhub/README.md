@@ -11,7 +11,7 @@ What to enter in the GIANTS ModHub upload form for this mod. Each text box below
 | Title English | Server Lag Watch |
 | Title German | Server Lag Watch |
 | Title French | Server Lag Watch |
-| Version | `1` `5` `0` `0` |
+| Version | `1` `6` `0` `0` |
 | Author | DTM Mods, PropaineX |
 | Manufacturer | Lizard |
 | Category 1 | Gameplay |
@@ -47,12 +47,10 @@ Every time the server saves the game, every player sees big red "SERVER SAVE" le
 
 When the server stops answering for 3 seconds, every player sees big red "SERVER LAG WATCH" letters in the middle of the screen until it answers again.
 
-It also turns off the profanity filter: chat, names and license plates show exactly what was typed. Apart from that it changes nothing in the game, it only measures and reports.
+Apart from that it changes nothing in the game, it only measures and reports.
 
-Changelog 1.5.0.0:
-- Freeze lines no longer say "unknown" when no single call was slow: time is added up per script over the whole frame and the biggest total is named with its call count.
-- The game's own updateables, systems and managers (and mod updateables) are now timed too.
-- Every freeze line shows "Watched scripts: X ms, outside: Y ms", so engine or base-game freezes can be told apart from mod freezes.
+Changelog 1.6.0.0:
+- The profanity filter moved to its own mod, FS25_NoProfanityFilter. Install that one to keep chat, names and license plates unfiltered.
 ```
 
 ## Description German
@@ -69,12 +67,10 @@ Jedes Mal, wenn der Server das Spiel speichert, sieht jeder Spieler große rote 
 
 Wenn der Server 3 Sekunden lang nicht antwortet, sieht jeder Spieler große rote Buchstaben "SERVER LAG WATCH" in der Mitte des Bildschirms, bis er wieder antwortet.
 
-Er schaltet außerdem den Schimpfwortfilter aus: Chat, Namen und Kennzeichen zeigen genau das, was eingegeben wurde. Abgesehen davon ändert er nichts am Spiel, er misst nur und meldet.
+Abgesehen davon ändert er nichts am Spiel, er misst nur und meldet.
 
-Changelog 1.5.0.0:
-- Hänger-Zeilen sagen nicht mehr "unknown", wenn kein einzelner Aufruf langsam war: Die Zeit wird pro Skript über den ganzen Frame zusammengezählt und die größte Summe mit der Anzahl der Aufrufe genannt.
-- Updateables, Systeme und Manager des Spiels (und Updateables von Mods) werden jetzt auch gemessen.
-- Jede Hänger-Zeile zeigt "Watched scripts: X ms, outside: Y ms", damit Hänger durch Engine oder Basisspiel von Mod-Hängern unterschieden werden können.
+Changelog 1.6.0.0:
+- Der Schimpfwortfilter ist in einen eigenen Mod umgezogen, FS25_NoProfanityFilter. Diesen installieren, damit Chat, Namen und Kennzeichen weiter ungefiltert bleiben.
 ```
 
 ## Description French
@@ -91,12 +87,10 @@ Chaque fois que le serveur sauvegarde la partie, chaque joueur voit de grandes l
 
 Quand le serveur ne répond plus pendant 3 secondes, chaque joueur voit de grandes lettres rouges "SERVER LAG WATCH" au milieu de l'écran jusqu'à ce qu'il réponde à nouveau.
 
-Il désactive aussi le filtre de grossièretés : chat, noms et plaques affichent exactement ce qui a été tapé. À part cela, il ne change rien au jeu, il mesure et signale seulement.
+À part cela, il ne change rien au jeu, il mesure et signale seulement.
 
-Changelog 1.5.0.0 :
-- Les lignes de gel n'indiquent plus "unknown" quand aucun appel isolé n'était lent : le temps est additionné par script sur toute l'image et le plus gros total est nommé avec son nombre d'appels.
-- Les updateables, systèmes et gestionnaires du jeu (et les updateables des mods) sont maintenant mesurés aussi.
-- Chaque ligne de gel affiche "Watched scripts: X ms, outside: Y ms", pour distinguer les gels du moteur ou du jeu de base de ceux d'un mod.
+Changelog 1.6.0.0 :
+- Le filtre de grossièretés est passé dans son propre mod, FS25_NoProfanityFilter. Installez-le pour garder le chat, les noms et les plaques sans filtre.
 ```
 
 ## Screenshots
@@ -106,5 +100,4 @@ Upload the three in [`screenshots/`](screenshots/) (1600x900, unedited in-game s
 ## Before uploading
 
 - The icon was upscaled from 256 px; a native 512 px icon would look sharper on ModHub.
-- The mod turns off the game's profanity filter for chat, names and license plates. GIANTS may reject a mod that switches off this filter; owner's decision whether to keep that part in a ModHub version.
 - Missing translations in the mod itself: the modDesc title and description and the on-screen messages are English only. The German/French texts here do not add them to the mod.

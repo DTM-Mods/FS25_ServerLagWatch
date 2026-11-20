@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="116">
     <author>DTM Mods, PropaineX</author>
-    <version>1.5.0.0</version>
+    <version>1.6.0.0</version>
 
     <title>
         <en>Server Lag Watch</en>
@@ -20,12 +20,10 @@ Every time the server saves the game, every player sees big red "SERVER SAVE" le
 
 When the server stops answering for 3 seconds, every player sees big red "SERVER LAG WATCH" letters in the middle of the screen until it answers again.
 
-It also turns off the profanity filter: chat, names and license plates show exactly what was typed. Apart from that it changes nothing in the game, it only measures and reports.
+Apart from that it changes nothing in the game, it only measures and reports.
 
-Changelog 1.5.0.0:
-- Freeze lines no longer say "unknown" when no single call was slow: time is added up per script over the whole frame and the biggest total is named with its call count.
-- The game's own updateables, systems and managers (and mod updateables) are now timed too.
-- Every freeze line shows "Watched scripts: X ms, outside: Y ms", so engine or base-game freezes can be told apart from mod freezes.]]></en>
+Changelog 1.6.0.0:
+- The profanity filter moved to its own mod, FS25_NoProfanityFilter. Install that one to keep chat, names and license plates unfiltered.]]></en>
         <de><![CDATA[Beschreibung: Findet heraus, welcher Mod deinen Server einfrieren lässt. Jeder Hänger über eine Viertelsekunde wird jedem Spieler angezeigt und ins Server-Log geschrieben, mit dem Mod-Skript oder dem Speichern als Ursache.
 Tastenkombinationen: keine, der Mod arbeitet von selbst. Auf dem Server und im Spiel jedes Spielers installieren.
 GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
@@ -38,12 +36,10 @@ Jedes Mal, wenn der Server das Spiel speichert, sieht jeder Spieler große rote 
 
 Wenn der Server 3 Sekunden lang nicht antwortet, sieht jeder Spieler große rote Buchstaben "SERVER LAG WATCH" in der Mitte des Bildschirms, bis er wieder antwortet.
 
-Er schaltet außerdem den Schimpfwortfilter aus: Chat, Namen und Kennzeichen zeigen genau das, was eingegeben wurde. Abgesehen davon ändert er nichts am Spiel, er misst nur und meldet.
+Abgesehen davon ändert er nichts am Spiel, er misst nur und meldet.
 
-Changelog 1.5.0.0:
-- Hänger-Zeilen sagen nicht mehr "unknown", wenn kein einzelner Aufruf langsam war: Die Zeit wird pro Skript über den ganzen Frame zusammengezählt und die größte Summe mit der Anzahl der Aufrufe genannt.
-- Updateables, Systeme und Manager des Spiels (und Updateables von Mods) werden jetzt auch gemessen.
-- Jede Hänger-Zeile zeigt "Watched scripts: X ms, outside: Y ms", damit Hänger durch Engine oder Basisspiel von Mod-Hängern unterschieden werden können.]]></de>
+Changelog 1.6.0.0:
+- Der Schimpfwortfilter ist in einen eigenen Mod umgezogen, FS25_NoProfanityFilter. Diesen installieren, damit Chat, Namen und Kennzeichen weiter ungefiltert bleiben.]]></de>
     </description>
 
     <iconFilename>icon_serverLagWatch.dds</iconFilename>
@@ -51,7 +47,6 @@ Changelog 1.5.0.0:
     <multiplayer supported="true"/>
 
     <extraSourceFiles>
-        <sourceFile filename="scripts/NoProfanityFilter.lua"/>
         <sourceFile filename="scripts/ServerLagWatch.lua"/>
     </extraSourceFiles>
 </modDesc>

@@ -4,6 +4,10 @@
 
 # Patch notes
 
+## 1.6.0.0
+
+- The profanity filter moved to its own mod, **FS25_NoProfanityFilter**. Install that one to keep chat, names and license plates unfiltered; this mod no longer touches the filter.
+
 ## 1.5.0.0
 
 - Freeze lines no longer say "unknown" just because no single call took 40 ms: time is now added up per script across the whole frame, and the script with the biggest total is named with its call count (for example "300 ms in 20 calls"). Time spent inside other timed calls is not counted twice.
