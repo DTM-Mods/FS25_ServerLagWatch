@@ -4,6 +4,12 @@
 
 # Patch notes
 
+## 1.5.1.0
+
+- All 27 game languages: the big red "SERVER SAVE" letters and the freeze notification (farm, driver, field, "300 ms in 20 calls" and so on) show in each player's own language. The server sends the line with placeholders and each player's game fills in the words, so players with different languages on one server each read their own. Script and class names stay as they are; the big "SERVER LAG WATCH" letters are the mod's name and stay English.
+- The server log writes those words in the server's language; the rest of each log line stays English.
+- Mod description in all 27 languages.
+
 ## 1.5.0.0
 
 - Freeze lines no longer say "unknown" just because no single call took 40 ms: time is now added up per script across the whole frame, and the script with the biggest total is named with its call count (for example "300 ms in 20 calls"). Time spent inside other timed calls is not counted twice.

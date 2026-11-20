@@ -11,7 +11,7 @@ What to enter in the GIANTS ModHub upload form for this mod. Each text box below
 | Title English | Server Lag Watch |
 | Title German | Server Lag Watch |
 | Title French | Server Lag Watch |
-| Version | `1` `5` `0` `0` |
+| Version | `1` `5` `1` `0` |
 | Author | DTM Mods, PropaineX |
 | Manufacturer | Lizard |
 | Category 1 | Gameplay |
@@ -49,10 +49,9 @@ When the server stops answering for 3 seconds, every player sees big red "SERVER
 
 It also turns off the profanity filter: chat, names and license plates show exactly what was typed. Apart from that it changes nothing in the game, it only measures and reports.
 
-Changelog 1.5.0.0:
-- Freeze lines no longer say "unknown" when no single call was slow: time is added up per script over the whole frame and the biggest total is named with its call count.
-- The game's own updateables, systems and managers (and mod updateables) are now timed too.
-- Every freeze line shows "Watched scripts: X ms, outside: Y ms", so engine or base-game freezes can be told apart from mod freezes.
+Changelog 1.5.1.0:
+- The "SERVER SAVE" letters and the freeze notification are in all 27 game languages: every player reads them in their own language.
+- Description in all 27 languages.
 ```
 
 ## Description German
@@ -63,40 +62,38 @@ GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
 
 Sobald der Server länger als eine Viertelsekunde stehen bleibt, bekommt jeder Spieler eine Meldung auf den Bildschirm: wie lange der Server eingefroren war und welches Mod-Skript in diesem Moment am langsamsten war. Dieselbe Zeile wird ins Server-Log geschrieben, damit die Ursache auch später noch gefunden werden kann.
 
-Die Zeit wird pro Skript über den ganzen Frame zusammengezählt, damit auch viele kleine Aufrufe auffallen ("300 ms in 20 calls"), und die Updateables, Systeme und Manager des Spiels werden ebenfalls gemessen. Jede Hänger-Zeile teilt die Zeit in gemessene Skripte und Zeit außerhalb: Ist "outside" der größte Teil, war die Engine oder ungemessener Basisspiel-Code die Ursache, kein Mod.
+Die Zeit wird pro Skript über den ganzen Frame zusammengezählt, damit auch viele kleine Aufrufe auffallen ("300 ms in 20 Aufrufen"), und die Updateables, Systeme und Manager des Spiels werden ebenfalls gemessen. Jede Hänger-Zeile im Log teilt die Zeit in gemessene Skripte und Zeit außerhalb: Ist "outside" der größte Teil, war die Engine oder ungemessener Basisspiel-Code die Ursache, kein Mod.
 
-Jedes Mal, wenn der Server das Spiel speichert, sieht jeder Spieler große rote Buchstaben "SERVER SAVE" in der Mitte des Bildschirms, bis das Speichern fertig ist.
+Jedes Mal, wenn der Server das Spiel speichert, sieht jeder Spieler große rote Buchstaben "SERVER SPEICHERT" in der Mitte des Bildschirms, bis das Speichern fertig ist.
 
 Wenn der Server 3 Sekunden lang nicht antwortet, sieht jeder Spieler große rote Buchstaben "SERVER LAG WATCH" in der Mitte des Bildschirms, bis er wieder antwortet.
 
 Er schaltet außerdem den Schimpfwortfilter aus: Chat, Namen und Kennzeichen zeigen genau das, was eingegeben wurde. Abgesehen davon ändert er nichts am Spiel, er misst nur und meldet.
 
-Changelog 1.5.0.0:
-- Hänger-Zeilen sagen nicht mehr "unknown", wenn kein einzelner Aufruf langsam war: Die Zeit wird pro Skript über den ganzen Frame zusammengezählt und die größte Summe mit der Anzahl der Aufrufe genannt.
-- Updateables, Systeme und Manager des Spiels (und Updateables von Mods) werden jetzt auch gemessen.
-- Jede Hänger-Zeile zeigt "Watched scripts: X ms, outside: Y ms", damit Hänger durch Engine oder Basisspiel von Mod-Hängern unterschieden werden können.
+Changelog 1.5.1.0:
+- Die Buchstaben "SERVER SPEICHERT" und die Hänger-Meldung gibt es in allen 27 Sprachen des Spiels: Jeder Spieler liest sie in seiner eigenen Sprache.
+- Beschreibung in allen 27 Sprachen.
 ```
 
 ## Description French
 ```text
-Description : trouve quel mod fait geler votre serveur. Chaque gel de plus d'un quart de seconde est affiché à chaque joueur et écrit dans le journal du serveur, avec le script de mod ou la sauvegarde en cause.
-Raccourcis : aucun, le mod fonctionne tout seul. À installer sur le serveur et dans le jeu de chaque joueur.
-GitHub : https://github.com/DTM-Mods/FS25_ServerLagWatch
+Description : trouve le mod qui fait geler ton serveur. Chaque gel de plus d'un quart de seconde est affiché à tous les joueurs et écrit dans le journal du serveur, avec le script du mod ou la sauvegarde qui l'a causé.
+Raccourcis : aucun, il fonctionne tout seul. À installer sur le serveur et dans le jeu de chaque joueur.
+GitHub: https://github.com/DTM-Mods/FS25_ServerLagWatch
 
-Dès que le serveur s'arrête plus d'un quart de seconde, chaque joueur reçoit une notification à l'écran : la durée du gel et le script de mod le plus lent à ce moment-là. La même ligne est écrite dans le journal du serveur, pour retrouver la cause plus tard.
+Dès que le serveur s'arrête plus d'un quart de seconde, chaque joueur reçoit une notification à l'écran : combien de temps le serveur a gelé et quel script de mod était le plus lent à ce moment-là. La même ligne est écrite dans le journal du serveur, pour retrouver la cause plus tard.
 
-Le temps est additionné par script sur toute l'image, pour que beaucoup de petits appels ressortent aussi ("300 ms in 20 calls"), et les updateables, systèmes et gestionnaires du jeu sont mesurés aussi. Chaque ligne de gel sépare le temps des scripts mesurés du temps en dehors : si "outside" en fait la plus grande partie, la cause est le moteur ou du code du jeu de base non mesuré, pas un mod.
+Le temps est additionné par script sur toute l'image, donc beaucoup de petits appels apparaissent aussi ("300 ms en 20 appels"), et les updateables, systèmes et gestionnaires du jeu sont mesurés eux aussi. Chaque ligne de gel du journal sépare le temps des scripts mesurés et le temps en dehors : quand "outside" en est la plus grande partie, c'est le moteur ou du code non mesuré du jeu de base qui a causé le gel, pas un mod.
 
-Chaque fois que le serveur sauvegarde la partie, chaque joueur voit de grandes lettres rouges "SERVER SAVE" au milieu de l'écran jusqu'à la fin de la sauvegarde.
+Chaque fois que le serveur sauvegarde la partie, chaque joueur voit de grandes lettres rouges "SAUVEGARDE SERVEUR" au milieu de l'écran jusqu'à la fin de la sauvegarde.
 
 Quand le serveur ne répond plus pendant 3 secondes, chaque joueur voit de grandes lettres rouges "SERVER LAG WATCH" au milieu de l'écran jusqu'à ce qu'il réponde à nouveau.
 
-Il désactive aussi le filtre de grossièretés : chat, noms et plaques affichent exactement ce qui a été tapé. À part cela, il ne change rien au jeu, il mesure et signale seulement.
+Il désactive aussi le filtre de grossièretés : le chat, les noms et les plaques d'immatriculation affichent exactement ce qui a été tapé. À part ça, il ne change rien au jeu, il mesure et signale seulement.
 
-Changelog 1.5.0.0 :
-- Les lignes de gel n'indiquent plus "unknown" quand aucun appel isolé n'était lent : le temps est additionné par script sur toute l'image et le plus gros total est nommé avec son nombre d'appels.
-- Les updateables, systèmes et gestionnaires du jeu (et les updateables des mods) sont maintenant mesurés aussi.
-- Chaque ligne de gel affiche "Watched scripts: X ms, outside: Y ms", pour distinguer les gels du moteur ou du jeu de base de ceux d'un mod.
+Changelog 1.5.1.0:
+- Les lettres "SAUVEGARDE SERVEUR" et la notification de gel existent dans les 27 langues du jeu : chaque joueur les lit dans sa propre langue.
+- Description dans les 27 langues.
 ```
 
 ## Screenshots
@@ -107,4 +104,4 @@ Upload the three in [`screenshots/`](screenshots/) (1600x900, unedited in-game s
 
 - The icon was upscaled from 256 px; a native 512 px icon would look sharper on ModHub.
 - The mod turns off the game's profanity filter for chat, names and license plates. GIANTS may reject a mod that switches off this filter; owner's decision whether to keep that part in a ModHub version.
-- Missing translations in the mod itself: the modDesc title and description and the on-screen messages are English only. The German/French texts here do not add them to the mod.
+- The description and the on-screen messages are in all 27 game languages (modDesc and `translations/`). The title stays "Server Lag Watch" in every language, as do the big "SERVER LAG WATCH" letters (the mod's name).

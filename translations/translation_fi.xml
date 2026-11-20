@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+    <elements>
+        <e k="slw_serverSave" v="PALVELIN TALLENTAA"/>
+        <e k="slw_serverFroze" v="Palvelin jumittui %s s - %s"/>
+        <e k="slw_unknown" v="tuntematon"/>
+        <e k="slw_farm" v="Tila %s"/>
+        <e k="slw_aiHelper" v="tekoälyapulainen"/>
+        <e k="slw_noDriver" v="ei kuljettajaa"/>
+        <e k="slw_field" v="Pelto %s"/>
+        <e k="slw_farmland" v="maa-alue %s"/>
+        <e k="slw_offField" v="peltojen ulkopuolella"/>
+        <e k="slw_baseGame" v="peruspeli"/>
+        <e k="slw_mod" v="modi %s"/>
+        <e k="slw_vehiclePlaceable" v="ajoneuvo/rakennus"/>
+        <e k="slw_slowestOne" v="hitain"/>
+        <e k="slw_gameSave" v="pelin tallennus"/>
+        <e k="slw_msInCalls" v="%s ms, kutsuja: %s"/>
+        <e k="slw_msInOneCall" v="%s ms, 1 kutsu"/>
+    </elements>
+</l10n>

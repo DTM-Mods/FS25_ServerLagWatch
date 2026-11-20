@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+    <elements>
+        <e k="slw_serverSave" v="ЗБЕРЕЖЕННЯ СЕРВЕРА"/>
+        <e k="slw_serverFroze" v="Сервер завис на %s с - %s"/>
+        <e k="slw_unknown" v="невідомо"/>
+        <e k="slw_farm" v="Ферма %s"/>
+        <e k="slw_aiHelper" v="ШІ-помічник"/>
+        <e k="slw_noDriver" v="без водія"/>
+        <e k="slw_field" v="Поле %s"/>
+        <e k="slw_farmland" v="ділянка %s"/>
+        <e k="slw_offField" v="поза полем"/>
+        <e k="slw_baseGame" v="базова гра"/>
+        <e k="slw_mod" v="мод %s"/>
+        <e k="slw_vehiclePlaceable" v="техніка/споруда"/>
+        <e k="slw_slowestOne" v="найповільніший"/>
+        <e k="slw_gameSave" v="збереження гри"/>
+        <e k="slw_msInCalls" v="%s ms, викликів: %s"/>
+        <e k="slw_msInOneCall" v="%s ms, 1 виклик"/>
+    </elements>
+</l10n>

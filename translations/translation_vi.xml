@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+    <elements>
+        <e k="slw_serverSave" v="MÁY CHỦ ĐANG LƯU"/>
+        <e k="slw_serverFroze" v="Máy chủ bị đứng %s giây - %s"/>
+        <e k="slw_unknown" v="không rõ"/>
+        <e k="slw_farm" v="Nông trại %s"/>
+        <e k="slw_aiHelper" v="trợ lý AI"/>
+        <e k="slw_noDriver" v="không có người lái"/>
+        <e k="slw_field" v="Ruộng %s"/>
+        <e k="slw_farmland" v="khu đất %s"/>
+        <e k="slw_offField" v="ngoài ruộng"/>
+        <e k="slw_baseGame" v="game gốc"/>
+        <e k="slw_mod" v="mod %s"/>
+        <e k="slw_vehiclePlaceable" v="xe/công trình"/>
+        <e k="slw_slowestOne" v="cái chậm nhất"/>
+        <e k="slw_gameSave" v="lưu game"/>
+        <e k="slw_msInCalls" v="%s ms trong %s lần gọi"/>
+        <e k="slw_msInOneCall" v="%s ms trong 1 lần gọi"/>
+    </elements>
+</l10n>

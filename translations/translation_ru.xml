@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+    <elements>
+        <e k="slw_serverSave" v="СОХРАНЕНИЕ СЕРВЕРА"/>
+        <e k="slw_serverFroze" v="Сервер завис на %s с - %s"/>
+        <e k="slw_unknown" v="неизвестно"/>
+        <e k="slw_farm" v="Ферма %s"/>
+        <e k="slw_aiHelper" v="ИИ-помощник"/>
+        <e k="slw_noDriver" v="без водителя"/>
+        <e k="slw_field" v="Поле %s"/>
+        <e k="slw_farmland" v="участок %s"/>
+        <e k="slw_offField" v="вне поля"/>
+        <e k="slw_baseGame" v="базовая игра"/>
+        <e k="slw_mod" v="мод %s"/>
+        <e k="slw_vehiclePlaceable" v="техника/постройка"/>
+        <e k="slw_slowestOne" v="самый медленный"/>
+        <e k="slw_gameSave" v="сохранение игры"/>
+        <e k="slw_msInCalls" v="%s ms, вызовов: %s"/>
+        <e k="slw_msInOneCall" v="%s ms, 1 вызов"/>
+    </elements>
+</l10n>

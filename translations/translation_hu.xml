@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+    <elements>
+        <e k="slw_serverSave" v="SZERVER MENTÉS"/>
+        <e k="slw_serverFroze" v="A szerver lefagyott %s mp-re - %s"/>
+        <e k="slw_unknown" v="ismeretlen"/>
+        <e k="slw_farm" v="Gazdaság %s"/>
+        <e k="slw_aiHelper" v="MI-segítő"/>
+        <e k="slw_noDriver" v="nincs sofőr"/>
+        <e k="slw_field" v="Tábla %s"/>
+        <e k="slw_farmland" v="földterület %s"/>
+        <e k="slw_offField" v="táblán kívül"/>
+        <e k="slw_baseGame" v="alapjáték"/>
+        <e k="slw_mod" v="mod %s"/>
+        <e k="slw_vehiclePlaceable" v="jármű/épület"/>
+        <e k="slw_slowestOne" v="a leglassabb"/>
+        <e k="slw_gameSave" v="játékmentés"/>
+        <e k="slw_msInCalls" v="%s ms, hívások: %s"/>
+        <e k="slw_msInOneCall" v="%s ms, 1 hívás"/>
+    </elements>
+</l10n>

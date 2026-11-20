@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+    <elements>
+        <e k="slw_serverSave" v="SERVER SLAAT OP"/>
+        <e k="slw_serverFroze" v="Server bevroor %s s - %s"/>
+        <e k="slw_unknown" v="onbekend"/>
+        <e k="slw_farm" v="Boerderij %s"/>
+        <e k="slw_aiHelper" v="AI-hulp"/>
+        <e k="slw_noDriver" v="geen bestuurder"/>
+        <e k="slw_field" v="Veld %s"/>
+        <e k="slw_farmland" v="perceel %s"/>
+        <e k="slw_offField" v="buiten de velden"/>
+        <e k="slw_baseGame" v="basisspel"/>
+        <e k="slw_mod" v="mod %s"/>
+        <e k="slw_vehiclePlaceable" v="voertuig/plaatsbaar object"/>
+        <e k="slw_slowestOne" v="de traagste"/>
+        <e k="slw_gameSave" v="opslaan"/>
+        <e k="slw_msInCalls" v="%s ms in %s aanroepen"/>
+        <e k="slw_msInOneCall" v="%s ms in 1 aanroep"/>
+    </elements>
+</l10n>
